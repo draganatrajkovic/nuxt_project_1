@@ -11,7 +11,15 @@
     "generate": "nuxt generate"
   },
   "dependencies": {
-    "nuxt": "^2.0.0"
+    "bootstrap": "^4.5.0",
+    "bootstrap-vue": "^2.15.0",
+    "node-sass": "^4.14.1",
+    "nuxt": "^2.0.0",
+    "sass-loader": "^8.0.2",
+    "vue": "^2.6.11"
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "pug": "^3.0.0",
+    "pug-plain-loader": "^1.0.0"
+  }
 }
