@@ -1,7 +1,7 @@
 <template>
     <div class="navigation-bar">
-        <nuxt-link to="/">Home |</nuxt-link>
-        <nuxt-link to="/posts">Posts |</nuxt-link>
+        <nuxt-link to="/">Home </nuxt-link><span>|</span>
+        <nuxt-link to="/posts">Posts </nuxt-link><span>|</span>
         <nuxt-link to="/about-us">About us</nuxt-link>
     </div>
 </template>
@@ -16,6 +16,14 @@
         a {
             color: white;
             text-decoration: none;
+        }
+        a.nuxt-link-active {
+            color: darkred;
+        }
+        span {
+            margin-left: 5px;
+            margin-right: 5px;
+            color: white;
         }
     }
 </style>

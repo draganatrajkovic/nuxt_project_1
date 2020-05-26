@@ -1,8 +1,12 @@
 <template>
-    <div>
+    <div class="posts">
         <h3>Posts:</h3>
         <ul v-for='post in getPosts' :key="post.id"   >
-            <li><button @click="singlePost(post.id)">{{post.title}}</button></li>
+            <li>
+                <button @click="singlePost(post.id)">
+                    {{post.title}}
+                </button>
+            </li>
         </ul>
     </div>
 </template>
@@ -25,3 +29,12 @@ export default {
     }
 }
 </script>
+
+<style>
+    .posts {
+        padding: 50px;
+        button {
+            color: red;
+        }
+    }
+</style>
