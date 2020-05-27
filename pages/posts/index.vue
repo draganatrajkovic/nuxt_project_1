@@ -33,8 +33,7 @@ export default {
 <style>
     .posts {
         padding: 50px;
-        button {
-            color: red;
-        }
+        min-height: 80vh;
+    
     }
 </style>

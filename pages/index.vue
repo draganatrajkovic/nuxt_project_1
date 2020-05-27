@@ -1,15 +1,15 @@
 <template>
   <div class="container">
-      <Test />
+      <BlockCover />
   </div>
 </template>
 
 <script>
-import Test from '~/components/Test.vue'
+import BlockCover from '~/components/blocks/BlockCover.vue'
 
 export default {
   components: {
-    Test
+    BlockCover
   }
 }
 </script>
@@ -18,5 +18,6 @@ export default {
   .container {
     display: flex;
     justify-content: center;
+    min-height: 80vh;
   }
 </style>

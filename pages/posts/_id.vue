@@ -1,23 +1,20 @@
 <template>
   <div class="single-post">
-    {{getPosts.filter(p => p.id == this.id)}}
-
+    {{post}}
   </div>
 </template>
 
 <script>
-import {  mapGetters } from 'vuex'
 export default {
   data() {
     return {
       id:this.$route.params.id,
-      // post: ''
     }
   },
   computed: {
-    ...mapGetters({
-        getPosts: 'posts/getPosts',
-    })
+    post() {
+      this.$store.posts.commit('getSinglePost', this.id)
+    }
   },
 
 }
@@ -25,6 +22,6 @@ export default {
 
 <style lang="scss" scoped>
   .single-post {
-
+    min-height: 80vh;
   }
 </style>
