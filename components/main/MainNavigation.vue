@@ -17,6 +17,21 @@
     </div>
 </template>
 
+<script>
+import Inspiration from '~/pages/Inspiration.vue'
+import Customization from '~/pages/Customization.vue'
+import Company from '~/pages/Company.vue'
+import Contact from '~/pages/Contact.vue'
+
+export default {
+    components: {
+        Inspiration,
+        Customization,
+        Company,
+        Contact
+    }
+}
+</script>
 <style lang="scss" scoped>
     .main__navigation {
         display: flex;

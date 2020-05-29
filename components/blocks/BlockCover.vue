@@ -1,11 +1,9 @@
 <template>
     <div class="box__wrap box__wrap--cover">
         <div class="box">
-            <div>
-                <h1>The most cost-efficient way to build a light? Once.</h1> 
-            </div>
-            <div>
-                <button class="btn">More on that</button>
+            <div class="box__section">
+                <h1 class="title--cover">The most cost-efficient way to build a light? Once.</h1> 
+                <button class="btn" @click="handleMoreOnThat">More on that</button>
             </div>
         </div>
     </div>
@@ -13,9 +11,9 @@
 
 <script>
 export default {
-    data() {
-        return {
-
+    methods: {
+        handleMoreOnThat() {
+            console.log('handleMoreOnThat')
         }
     }
 }

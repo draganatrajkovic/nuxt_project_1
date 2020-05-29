@@ -2,7 +2,7 @@
     <div class="box__wrap">
         <div class="box box__header">
             <div class="header-text">
-                <p>ASL Lightning Fixtures Made In America</p>
+                <p class="main-header__text">ASL Lightning Fixtures Made In America</p>
             </div>
             <div class="header-links">
                 <button>Resources</button>
