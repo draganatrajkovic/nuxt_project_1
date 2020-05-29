@@ -1,10 +1,7 @@
 <template>
-    <div class="box__worker">
-        <img src="@/static/BlockTeam/worker_01.png"/>
-        <!-- <img src="worker.img"> -->
-
-        <!-- <button @click="handleImg(worker.img)">Click</button> -->
-
+    <div class="box__section box__section--worker">
+        <!-- problem sa dinamickim slikama kada se navodi apsolutna putanja-->
+        <img :src="require(`./../../../static/BlockTeam/${worker.img}`)">
         <h2 class="block-team__subtitle">{{worker.name}}</h2>
         <p class="block-team__text">{{worker.position}}</p>
     </div>
@@ -13,20 +10,14 @@
 <script>
 export default {
     props: [
-        'worker', 'img'
+        'worker'
     ],
-    methods: {
-        handleImg(img) {
-            alert(img)
-        }
-    }
 }
 </script>
 
 <style lang="scss" scoped>
-    .box__worker {
-        background-color: wheat;
-        width: 20%;
-        margin: 20px;
+    .box__section--worker {
+        width: 100%;
+        background-color: chartreuse;
     }
 </style>

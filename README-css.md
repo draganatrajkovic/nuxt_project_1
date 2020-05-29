@@ -5,15 +5,17 @@ COLORS
 4) $darkColor (dark viiolet #191723)
 
 BOX
-1) box
-    i) box - (img left, text right)
-    ii) box--reverse (img right, text left)
-2) box--column (flex-direction: column;)
+1) box__wrap - for backgrounds over the boudries
+2) box - (content 70% width)
+3) box--column (flex-direction: column;)
 
 BOX SECTION
-1) box__section (flex-direction: column)
+1) box__section (100% content in box 70%; column)
 2) box__section--inline (flex-direction: row)
-3) box__img
+3) box__section--reverse (flex-direction: row-reverse;)
+4) box__section--half (50% width)
+5) box__img (100% width)
+6) box__img--half (50% width)
 
 TITLES
 1) title 

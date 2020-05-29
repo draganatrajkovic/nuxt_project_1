@@ -26,19 +26,63 @@ html {
   // box-sizing: border-box;
   // margin: 0 auto;
   // font-family: 'Raleway', sans-serif;
-  // // background-image: url('~assets/images/bg.jpg');
-  // background-repeat: repeat;
-  // min-height: 100vh;
-  // width: 100%;
-  // button {
-  //   background-color: transparent;
-  //   border: none;
-  //   color: white;
-  //   &:hover {
-  //     cursor: pointer;
-  //     opacity: 0.7;
-  //   }
-  // }
+}
+
+.box__wrap {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+}
+
+.box {
+  width: 75%;
+  display: flex;
+  justify-content: space-between;
+  align-content: center;
+}
+
+.box--column {
+  flex-direction: column;
+}
+
+.box__section {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  // flex-wrap: wrap;
+}
+
+.box__section--inline {
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.box__section--reverse {
+  flex-direction: row-reverse;
+}
+
+.box__section--half {
+  width: 50%;
+}
+
+.box__img {
+  width: 100%;
+}
+
+.box__img--half {
+  width: 50%;
+}
+
+img {
+  max-width: 100%;
+}
+
+.drop-down {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
 }
 
 $mainColor: #2e2b3d;

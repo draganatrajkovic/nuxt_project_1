@@ -1,18 +1,20 @@
 <template>
     <div class="box__wrap box__wrap--luminaries">
-        <div class="box--column">
-            <div class="box--column">
-                <div class="box__section--inline">
+        <div class="box box--column">
+            <div class="box__section">
+                <div class="box__section box__section--inline">
                     <h1 class="title">The Luminaries Next Door</h1>
                     <Slider />
                 </div>
-                <p class="text">Big minds. Deep hearts. Small attitudes.</p>
-            </div>
-            <div class="box">
-                <div class="box__img">
-                    <img alt="luminaries_img"/>
+                <div>
+                    <p class="text">Big minds. Deep hearts. Small attitudes.</p>
                 </div>
-                <div class="box__section">
+            </div>
+            <div class="box__section box__section--inline">
+                <div class="box__img--half">
+                    <img src="~/static/BlockLuminaries/bg.png" alt="luminaries_img"/>
+                </div>
+                <div class="box__section box__section--half">
                     <div v-for="(lum, index) in luminaries" :key="index">
                         <div class="list-element--no-bullets" @click="handleDropDown(lum.id)">
                             <button>{{lum.title}}</button>

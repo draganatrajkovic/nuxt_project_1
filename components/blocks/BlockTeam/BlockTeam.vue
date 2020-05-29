@@ -1,9 +1,13 @@
 <template>
     <div class="box__wrap">
-        <div class="">
+        <div class="box box--column">
             <h1 class="title">A team plugged into yours </h1>
-            <div v-for="(worker, index) in team" :key="index" class="box__team" >
-                <BlockTeamWorker :worker="worker" :img="worker.img" />
+            <div class="box__section box__section--inline">
+                <!-- <div class="box__section box__section--inline box__section--workers"> -->
+                    <div v-for="(worker, index) in team" :key="index">
+                        <BlockTeamWorker :worker="worker" />
+                    </div>
+                <!-- </div> -->
             </div>
         </div>
     </div>
@@ -25,12 +29,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-    .box__wrap {
-        width: 100%;
+    .box__section--workers {
+        width: 30%;
     }
-    .box__team {
-        width: 100%;
-        display: flex;
-    }
-
 </style>

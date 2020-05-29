@@ -6,7 +6,7 @@
       <BlockOurStory />
       <BlockLuminaries />
       <BlockTeam />
-      <ExperienceDesign />
+      <BlockExperienceDesign />
   </div>
 </template>
 
@@ -17,7 +17,7 @@ import BlockAboutAsl from '~/components/blocks/BlockAboutAsl.vue'
 import BlockOurStory from '~/components/blocks/BlockOurStory.vue'
 import BlockLuminaries from '~/components/blocks/BlockLuminaries/BlockLuminaries.vue'
 import BlockTeam from '~/components/blocks/BlockTeam/BlockTeam.vue'
-import ExperienceDesign from '~/components/blocks/ExperienceDesign.vue'
+import BlockExperienceDesign from '~/components/blocks/BlockExperienceDesign.vue'
 
 export default {
   components: {
@@ -27,7 +27,7 @@ export default {
     BlockOurStory,
     BlockLuminaries,
     BlockTeam,
-    ExperienceDesign
+    BlockExperienceDesign
   }
 }
 </script>
@@ -37,6 +37,5 @@ export default {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    min-height: 80vh;
   }
 </style>

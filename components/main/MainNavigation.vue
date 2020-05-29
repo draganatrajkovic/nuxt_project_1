@@ -2,7 +2,7 @@
     <div class="box__wrap">
         <div class="box box__navigation">
             <div class="nav-img">
-                Logo
+                <img src="~/static/MainNavigation/logo.png">
             </div>
             <div class="nav-btn">
                 <button class="btn btn--switched">PRODUCT FINDER</button>
@@ -33,23 +33,7 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
-    .main__navigation {
-        display: flex;
-        // justify-content: flex-end;
-        // background-color: #ee753c;
-        padding: 30px;
-        margin: 0;
+    .box__navigation {
+        padding: 10px;
     }
-    // a {
-    //     color: white;
-    //     text-decoration: none;
-    // }
-    // a.nuxt-link-active {
-    //     color: darkred;
-    // }
-    // span {
-    //     margin-left: 5px;
-    //     margin-right: 5px;
-    //     color: white;
-    // }
 </style>

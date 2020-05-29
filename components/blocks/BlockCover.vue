@@ -20,5 +20,11 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-
+    .box__wrap--cover {
+        background-image: url("./../../static/BlockCover/bg.png");
+        background-size: 100%;
+        background-repeat: no-repeat;
+        background-position: center;
+        height: 750px;
+    }
 </style>
