@@ -1,5 +1,5 @@
 <template>
-    <div class="box__wrap box__wrap--about-asl">
+    <div class="box__wrap box__wrap--padding box__wrap--about-asl">
         <div class="box">
             <div class="box__section box__section--inline">
                 <div class="box__img--half">

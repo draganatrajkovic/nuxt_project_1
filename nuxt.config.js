@@ -13,7 +13,12 @@ export default {
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
-      { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css2?family=Raleway:wght@700&display=swap' }
+
+      //font-family: 'Lato', sans-serif;
+      { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap'},
+      
+      // font-family: "Circular Std Medium"
+      { rel: 'stylesheet', href: '//db.onlinewebfonts.com/c/9475d6a0b79c164f9f605673714e75d9?family=Circular+Std+Medium'}
     ]
   },
   /*
@@ -23,9 +28,7 @@ export default {
   /*
   ** Global CSS
   */
-  css: [
-    // '@/assets/sass/app.scss'
-  ],
+ css: ['~/assets/scss/main.scss'],
   /*
   ** Plugins to load before mounting the App
   */
@@ -40,8 +43,12 @@ export default {
   ** Nuxt.js modules
   */
   modules: [
-    // 'bootstrap-vue/nuxt'
+    // 'bootstrap-vue/nuxt',
+    '@nuxtjs/style-resources'
   ],
+  styleResources: {
+    scss: ['./assets/scss/*.scss']
+  },
   /*
   ** Build configuration
   */

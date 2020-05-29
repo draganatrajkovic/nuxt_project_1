@@ -1,11 +1,11 @@
 <template>
-    <div class="box__wrap box__wrap--our-story">
+    <div class="box__wrap box__wrap--padding box__wrap--our-story">
         <div class="box">
             <div class="box__section">
-                <h1 class="title">Our Story</h1>
+                <h1 class="title title--white">Our Story</h1>
                 <img src="~/static/BlockOurStory/bg.png" alt="our_story_img"/>
-                <h2 class="block-our-story__subtitle">Doing the Bright Thing Since 1979</h2>
-                <p class="text">It all began with a thermistor disk. The year was 1979 and, at 
+                <h2 class="title title--white block-our-story__subtitle">Doing the Bright Thing Since 1979</h2>
+                <p class="text text--white">It all began with a thermistor disk. The year was 1979 and, at 
                     out-of-the-way tradeshow, our president discovered a technology 
                     that would extend the life of an incandescent bulb, while simultaneously 
                     reducing labor cost. He adopted this technology, and established a 
@@ -27,5 +27,10 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-
+    .box__wrap--our-story {
+        background-color: $darkColor;
+    }
+    .block-our-story__subtitle {
+        font-size: 24px;
+    }
 </style>

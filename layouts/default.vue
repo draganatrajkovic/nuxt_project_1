@@ -22,17 +22,15 @@ export default {
 </script>
 
 <style lang="scss">
-html {
-  // box-sizing: border-box;
-  // margin: 0 auto;
-  // font-family: 'Raleway', sans-serif;
-}
-
 .box__wrap {
   width: 100%;
   display: flex;
   justify-content: center;
   align-content: center;
+}
+
+.box__wrap--padding {
+  padding: 100px 0;
 }
 
 .box {
@@ -51,7 +49,6 @@ html {
   display: flex;
   justify-content: center;
   flex-direction: column;
-  // flex-wrap: wrap;
 }
 
 .box__section--inline {
@@ -96,6 +93,7 @@ $darkColor: #191723;
   font-size: 14px;
   text-transform: uppercase;
   font-family: 'Lato';
+  font-weight: bold;
   border-radius: 20px;
   padding: 13px;
   border: none;
@@ -103,7 +101,13 @@ $darkColor: #191723;
     opacity: 0.8;
     cursor: pointer;
   }
+  &:focus {
+    outline: none;
+  }
 }
 
+.btn--no-bg {
+  background-color: transparent;
+}
 
 </style>

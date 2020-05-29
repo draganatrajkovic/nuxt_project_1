@@ -2,14 +2,14 @@
     <div class="box__wrap">
         <div class="box box__header">
             <div class="header-text">
-                <p class="main-header__text">ASL Lightning Fixtures Made In America</p>
+                <p class="text__header">ASL Lightning Fixtures Made In America</p>
             </div>
-            <div class="header-links">
-                <button>Resources</button>
-                <button>Technology</button>
-                <button>Compliance</button>
-                <button>Partners</button>
-                <button>My Account</button>
+            <div class="header-links text__header">
+                <a >Resources</a>
+                <a>Technology</a>
+                <a>Compliance</a>
+                <a>Partners</a>
+                <a>My Account</a>
             </div>
         </div>
     </div>
@@ -21,9 +21,24 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+    .box__header {
+        align-items: center;
+    }
     .box__wrap {
         background-color: #eff2f4;
-        /* color: 	#ee753c;
-        padding:1px; */
+    }
+    .text__header {
+        font-size: 14px;
+        font-family: 'Lato', sans-serif;
+        font-weight: normal;
+        color: $mainColor;
+    }
+    .header-links a {
+        margin: 0 10px;
+        text-decoration: none;
+        &:hover {
+            text-decoration: underline;
+            cursor: pointer;
+        }
     }
 </style>

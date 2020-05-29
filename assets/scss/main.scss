@@ -1,0 +1,54 @@
+html {
+    box-sizing: border-box;
+    margin: 0 auto;
+    font-family: 'Lato', sans-serif;
+}
+
+body {
+    margin: 0 !important;
+    overflow-x: hidden;
+}
+
+$mainColor: #2e2b3d;
+$lightColor: #ffd86a;
+$neutralColor: #b6b8bc;
+$darkColor: #191723;
+
+.title {
+    font-family: "Circular Std Medium";
+    font-size: 45px;
+    color: $mainColor;
+    font-weight: normal;
+}
+
+.title--white {
+    color: white;
+}
+
+.title--cover {
+    font-size: white;
+}
+
+.title--cover--white {
+    color: white;
+    font-size: 50px;
+}
+
+.text {
+    font-family: 'Lato', sans-serif;
+    font-weight: lighter;
+    font-size: 20px;
+    color: $mainColor;
+}
+
+.text--normal {
+    font-weight: normal;
+}
+
+.text--white {
+    color: white;
+}
+
+.text--bold {
+    font-weight: bold;
+}

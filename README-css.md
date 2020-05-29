@@ -6,8 +6,9 @@ COLORS
 
 BOX
 1) box__wrap - for backgrounds over the boudries
-2) box - (content 70% width)
-3) box--column (flex-direction: column;)
+2) box__wrap--padding - (top and bottom padding 100px)
+3) box - (content 70% width)
+4) box--column (flex-direction: column;)
 
 BOX SECTION
 1) box__section (100% content in box 70%; column)
@@ -23,14 +24,13 @@ TITLES
     ii) title--white (white)
     iii) title--cover (56px)
     iiii) title--cover--white (white, 50px)
-2) section-title
-    i) 
 
 TEXT
 1) text 
     i) text (Lato, light, 20px, mainColor)
     ii) text--white (white)
     iii) text--bold (bold)
+    iiii) text--normal (normal)
 
 BUTTONS
 1) btn 

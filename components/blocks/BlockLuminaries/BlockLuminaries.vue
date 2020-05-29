@@ -1,5 +1,5 @@
 <template>
-    <div class="box__wrap box__wrap--luminaries">
+    <div class="box__wrap box__wrap--padding box__wrap--luminaries">
         <div class="box box--column">
             <div class="box__section">
                 <div class="box__section box__section--inline">
@@ -16,12 +16,12 @@
                 </div>
                 <div class="box__section box__section--half">
                     <div v-for="(lum, index) in luminaries" :key="index">
-                        <div class="list-element--no-bullets" @click="handleDropDown(lum.id)">
-                            <button>{{lum.title}}</button>
+                        <div class="list-element--no-bullets block-luminaries__list-element" @click="handleDropDown(lum.id)">
+                            <h3 class="title block-luminaries__list-element__title">{{lum.title}}</h3>
                         </div>
                     </div>
                     <div>
-                        <p>{{lum.content}}</p>
+                        <p class="text">{{lum.content}}</p>
                     </div>
                 </div>
             </div>
@@ -52,8 +52,24 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-    .list-element--no-bullets :hover {
-        background-color: yellow;
-        cursor: pointer;
+    .box__wrap--luminaries {
+        background-color: #eff2f4;
+    }
+    .block-luminaries__list-element {
+        padding: 2px;
+        &:hover {
+            background-color: $lightColor;
+            cursor: pointer;
+        }
+    }
+    .block-luminaries__list-element:hover .block-luminaries__list-element__title {
+        color: $darkColor;
+    }
+    .block-luminaries__list-element__title {
+        font-size: 26px;
+        color: $neutralColor;
+        &:hover {
+            color: $darkColor;
+        }
     }
 </style>
