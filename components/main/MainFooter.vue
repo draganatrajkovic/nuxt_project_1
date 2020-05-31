@@ -93,10 +93,6 @@ export default {
     .footer__social {
         width: 20px;
         height: 20px;
-        &:hover {
-            cursor: pointer;
-            transition: 0.3s;
-        }
     }
     .footer__twitter {
         background: url('./../../static/MainFooter/icon_twitter.png') no-repeat center center;

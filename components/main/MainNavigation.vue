@@ -2,7 +2,7 @@
     <div class="box__wrap">
         <div class="box box__navigation">
             <div class="nav-img">
-                <img src="~/static/MainNavigation/logo.png">
+                <nuxt-link to="/" ><img src="~/static/MainNavigation/logo.png"></nuxt-link>
             </div>
             <div class="btn btn__nav">
                 <div class="btn__icon btn__icon__nav"></div>

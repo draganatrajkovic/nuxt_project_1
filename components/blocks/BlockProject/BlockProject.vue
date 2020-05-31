@@ -15,7 +15,7 @@
                     </div>
                 </div>
             </div>
-            <div class="box__section box__section--inline .box__section--reverse">
+            <div class="box__section box__section--inline box__section--reverse">
                 <div class="box__img--half">
                     <img src="~/static/BlockProject/product_gradient_01.png" alt="project_img"/>
                 </div>
@@ -68,11 +68,9 @@ export default {
         align-items: center;
         width: 30%;
         margin: 20px;
-        // background-color: turquoise;
         border-bottom: 1px solid $darkColor;
         &:hover {
             background-color: violet;
-            cursor: pointer;
         }
     }
     .drop-down__content {

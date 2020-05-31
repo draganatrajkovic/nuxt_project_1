@@ -94,8 +94,6 @@ img {
   opacity: 1;
 	&:hover {
 		opacity: 0.7;
-		transition: 0.3s;
-		cursor: pointer;
 	}
 	&:focus {
 		outline: none;
@@ -119,6 +117,11 @@ img {
 }
 .btn--no-bg {
 	background-color: transparent;
+}
+
+:hover {
+  cursor: pointer;
+  transition: 0.3s;
 }
 
 </style>
