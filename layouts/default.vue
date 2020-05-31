@@ -82,32 +82,43 @@ img {
   align-items: flex-start;
 }
 
-$mainColor: #2e2b3d;
-$lightColor: #ffd86a;
-$neutralColor: #b6b8bc;
-$darkColor: #191723;
-
 .btn {
+  width: 200px;
   background-color: $mainColor;
-  color: white;
-  font-size: 14px;
-  text-transform: uppercase;
-  font-family: 'Lato';
-  font-weight: bold;
-  border-radius: 20px;
-  padding: 13px;
+  border-radius: 35px;
+  padding: 13px 20px;
   border: none;
-  &:hover {
-    opacity: 0.8;
-    cursor: pointer;
-  }
-  &:focus {
-    outline: none;
-  }
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  opacity: 1;
+	&:hover {
+		opacity: 0.7;
+		transition: 0.3s;
+		cursor: pointer;
+	}
+	&:focus {
+		outline: none;
+	}
 }
-
+.btn__icon {
+	background: url('./../static/Icons/icon_button.png') no-repeat center center;
+	float: left;
+	width: 28px;
+	height: 25px;
+}
+.btn__text p {
+	color: white;
+	font-size: 14px;
+	text-transform: uppercase;
+	font-family: 'Lato';
+	font-weight: bold;
+}
+.btn--referse {
+	flex-direction: row-reverse;
+}
 .btn--no-bg {
-  background-color: transparent;
+	background-color: transparent;
 }
 
 </style>

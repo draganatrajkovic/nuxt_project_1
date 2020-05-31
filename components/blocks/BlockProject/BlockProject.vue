@@ -27,9 +27,10 @@
                     </ul>
                     <h3 class="text text--bold block-project__note-title">{{project.noteTitle}}</h3>
                     <p class="text text--normal block-project__note-text">{{project.noteContent}}</p>
-                    <button class="btn btn--reverse-icon" @click="handleCustomCapabilities">
-                        {{project.button}}
-                    </button>
+                    <div class="btn btn--referse btn__project" @click="handleCustomCapabilities">
+                        <div class="btn__icon"></div>
+                        <div class="btn__text"><p>{{project.button}}</p></div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -74,7 +75,6 @@ export default {
             cursor: pointer;
         }
     }
-
     .drop-down__content {
         padding: 0 10px;
         width: 100%;
@@ -82,7 +82,6 @@ export default {
         justify-content: space-between;
         align-items: center;
     }
-
     .block-project__list {
         list-style: none;
         li::before {
@@ -94,13 +93,13 @@ export default {
             margin-left: -1em;
         }
     }
-
-
     .block-project__subtitle {
         font-size: 36px;
     }
-
     .block-project__note-title, .block-project__note-text {
         font-size: 22px;
+    }
+    .btn__project {
+        width: 250px;
     }
 </style>

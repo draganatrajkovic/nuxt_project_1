@@ -4,8 +4,9 @@
             <div class="nav-img">
                 <img src="~/static/MainNavigation/logo.png">
             </div>
-            <div class="nav-btn">
-                <button class="btn btn--switched">PRODUCT FINDER</button>
+            <div class="btn btn__nav">
+                <div class="btn__icon btn__icon__nav"></div>
+                <div class="btn__text"><p>Product Finder</p></div>
             </div>
             <div class="nav-links">
                 <nuxt-link to="/inspiration" >Inspiration </nuxt-link>
@@ -52,5 +53,9 @@ export default {
         &:focus {
             color: $mainColor;
         }
+    }
+    
+    .btn__icon__nav {
+        background: url('./../../static/MainNavigation/icon_product_finder.png') no-repeat center center;
     }
 </style>

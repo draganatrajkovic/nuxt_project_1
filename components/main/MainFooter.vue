@@ -13,10 +13,10 @@
                         info@asllightning.com
                         (800) 369-1101
                     </p>
-                    <div class="box__footer-seg-social">
-                        <img src="~/static/MainFooter/icon_twitter.png" alt="twitter"/>
-                        <img src="~/static/MainFooter/icon_instagram.png" alt="instagram"/>
-                        <img src="~/static/MainFooter/icon_facebook.png" alt="facebook"/>
+                    <div class="box__section box__section--inline box__footer-seg-social">
+                        <div class="footer__social footer__twitter"></div>
+                        <div class="footer__social footer__instagram"></div>
+                        <div class="footer__social footer__facebook"></div>
                     </div>
                 </div>
                 <div class=" box__section box__section--footer">
@@ -38,7 +38,10 @@
                     <input placeholder="info@asllightning.com"/>
                 </div>
                 <div class=" box__section box__section--footer">
-                    <button class="btn btn--no-bg">Subscribe</button>
+                    <div class="btn btn--no-bg btn__footer" @click="handleSubscribe">
+                        <div class="btn__icon"></div>
+                        <div class="btn__text"><p>Subscribe</p></div>
+                    </div>
                 </div>
             </div>
             <div>
@@ -83,5 +86,34 @@ export default {
         text-transform: uppercase;
         font-weight: bold;
         color: #3b374f;
+    }
+    .btn__footer {
+        width: 130px;
+    }
+    .footer__social {
+        width: 20px;
+        height: 20px;
+        &:hover {
+            cursor: pointer;
+            transition: 0.3s;
+        }
+    }
+    .footer__twitter {
+        background: url('./../../static/MainFooter/icon_twitter.png') no-repeat center center;
+        &:hover {
+            background: url('./../../static/MainFooter/icon_twitter_hover.png') no-repeat center center;
+        }
+    }
+    .footer__instagram {
+        background: url('./../../static/MainFooter/icon_instagram.png') no-repeat center center;
+        &:hover {
+            background: url('./../../static/MainFooter/icon_instagram_hover.png') no-repeat center center;
+        }
+    }
+    .footer__facebook {
+        background: url('./../../static/MainFooter/icon_facebook.png') no-repeat center center;
+        &:hover {
+            background: url('./../../static/MainFooter/icon_facebook_hover.png') no-repeat center center;
+        }
     }
 </style>
