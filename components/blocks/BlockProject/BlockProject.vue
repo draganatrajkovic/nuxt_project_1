@@ -38,7 +38,7 @@
                     <p class="text">{{project.content}}</p>
                     <div class="list block-project__list">
                         <ul v-for="(li, index) in project.list" :key="index" class="list-element">
-                            <li class="text">{{li}}</li>
+                            <li class="text block-project__list_li">{{li}}</li>
                         </ul>
                     </div>
                     <h3 class="text text--bold block-project__note-title">{{project.noteTitle}}</h3>
@@ -117,6 +117,9 @@ export default {
         align-items: center;
     }
     
+    .block-project__list_li {
+        list-style: none;
+    }
     .block-project__list {
         list-style: none;
         margin-top: 30px;
