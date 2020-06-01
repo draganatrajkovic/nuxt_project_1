@@ -30,16 +30,16 @@ export default {
 }
 
 .box__wrap--padding {
-  padding: 100px 0;
+  padding: 130px 0;
 }
 
 .box {
-  width: 70%;
+  width: 62.5%;
   display: flex;
   justify-content: space-between;
   align-content: center;
   @media only screen and (max-width: 1920px) {
-    width: 60%;
+    // width: 60%;
   }
 }
 
@@ -89,7 +89,7 @@ img {
   width: 200px;
   background-color: $mainColor;
   border-radius: 35px;
-  padding: 13px 20px;
+  padding: 7px 32px;
   border: none;
   display: flex;
   justify-content: space-between;

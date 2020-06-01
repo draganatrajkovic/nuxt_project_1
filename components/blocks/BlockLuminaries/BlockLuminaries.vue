@@ -1,22 +1,22 @@
 <template>
     <div class="box__wrap box__wrap--padding box__wrap--luminaries">
         <div class="box box--column">
-            <div class="box__section">
-                <div class="box__section box__section--inline">
+            <div class="box__section block-luminaries__header">
+                <div class="box__section box__section--inline block-luminaries__title">
                     <h1 class="title">The Luminaries Next Door</h1>
                     <Slider />
                 </div>
-                <div>
+                <div class="block-luminaries__text">
                     <p class="text">Big minds. Deep hearts. Small attitudes.</p>
                 </div>
             </div>
-            <div class="box__section box__section--inline">
+            <div class="box__section box__section--inline block-luminaries__content">
                 <div class="box__img--half img">
                     <img src="~/static/BlockLuminaries/bg.png" alt="luminaries_img"/>
                 </div>
                 <div class="box__section box__section--half">
-                    <div v-for="(lum, index) in luminaries" :key="index">
-                        <div class="list-element--no-bullets block-luminaries__list-element" @click="handleDropDown(lum.id)">
+                    <div v-for="(lum, index) in luminaries" :key="index" class="list-element--no-bullets block-luminaries__list-element" >
+                        <div @click="handleDropDown(lum.id)">
                             <h3 class="title block-luminaries__list-element__title">{{lum.title}}</h3>
                         </div>
                     </div>
@@ -54,9 +54,17 @@ export default {
 <style lang="scss" scoped>
     .box__wrap--luminaries {
         background-color: #eff2f4;
+        padding-top: 130px;
+        padding-bottom: 180px;
+    }
+    .block-luminaries__header {
+        margin-bottom: 45px;
+    }
+    .block-luminaries__title {
+        margin-bottom: -10px;
     }
     .block-luminaries__list-element {
-        padding: 2px;
+        // padding: 2px;
         &:hover {
             background-color: $lightColor;
             cursor: pointer;

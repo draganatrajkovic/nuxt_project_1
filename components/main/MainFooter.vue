@@ -2,10 +2,10 @@
     <div class="box__wrap box__wrap--footer">
         <div class="box box--column">
             <div class="box__section box__section--inline box__section--top-align">
-                <div class="img">
+                <div class="img footer__logo-segment">
                     <img src="~/static/MainFooter/logo.png" alt="footer-logo"/>
                 </div>
-                <div class=" box__section box__section--footer">
+                <div class=" box__section box__section--footer footer__info-segment">
                     <p class="text__footer--upper">Company</p>
                     <p class="text__footer--white">
                         725 East State Street
@@ -19,7 +19,7 @@
                         <div class="footer__social footer__facebook" @click="handleFacebook"></div>
                     </div>
                 </div>
-                <div class=" box__section box__section--footer">
+                <div class=" box__section box__section--footer footer__links-segment">
                     <p class="text__footer--upper">Company</p>
                     <a class="text__footer--white footer__link" href="#">Products</a>
                     <a class="text__footer--white footer__link" href="#">About us</a>
@@ -27,13 +27,13 @@
                     <a class="text__footer--white footer__link" href="#">Resources</a>
                     <a class="text__footer--white footer__link" href="#">Inspiration</a>
                 </div>
-                <div class=" box__section box__section--footer">
+                <div class=" box__section box__section--footer footer__service-segment">
                     <p class="text__footer--upper">Customer Service</p>
                     <a class="text__footer--white footer__link" href="#">Contact us</a>
                     <a class="text__footer--white footer__link" href="#">Rep Locator</a>
                     <a class="text__footer--white footer__link" href="#">Shipping Information</a>
                 </div>
-                <div class="box__section box__section--footer">
+                <div class="box__section box__section--footer footer__subscribe-segment">
                     <p class="text__footer--upper">Stay up to date</p>
                     <form class="box__section box__section--inline box__section--footer__sub">
                         <input class="footer__input" v-model="email" placeholder="info@asllightning.com"/>
@@ -82,7 +82,8 @@ export default {
 
 <style lang="scss" scoped>
     .box__wrap--footer {
-        padding: 50px 0;
+        padding-top: 80px;
+        padding-bottom: 170px;
         background-color: #191723;
     }
     .box__section--top-align {
@@ -90,8 +91,23 @@ export default {
         border-bottom: 1px solid #3b374f;
         padding-bottom: 50px;
     }
-    .box__section--footer {
+    // .box__section--footer {
+    //     width: 15%;
+    // }
+    .footer__logo-segment {
         width: 15%;
+    }
+    .footer__info-segment {
+        width: 20%;
+    }
+    .footer__links-segment {
+        width: 20%;
+    }
+    .footer__service-segment {
+        width: 20%;
+    }
+    .footer__subscribe-segment {
+        width: 30%;
     }
     .box__section--footer input {
         background-color: #3b374f;
@@ -99,7 +115,6 @@ export default {
         border-radius: 5px;
         border: none;
     }
-
     .text__footer {
         font-size: 14px;
         font-family: 'Lato', sans-serif;
@@ -108,11 +123,13 @@ export default {
     }
     .text__footer--white {
         color: white;
+        line-height: 25px;
     }
     .text__footer--upper {
         text-transform: uppercase;
         font-weight: bold;
         color: #3b374f;
+        margin-bottom: 45px;
     }
     .btn__footer {
         width: 130px;

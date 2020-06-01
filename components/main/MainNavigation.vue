@@ -77,7 +77,7 @@ export default {
 </script>
 <style lang="scss" scoped>
     .box__navigation {
-        padding: 10px;
+        padding: 15px;
         align-items: center;
     }
     .nav-links {

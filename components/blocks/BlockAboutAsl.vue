@@ -14,3 +14,13 @@
         </div>
     </div>
 </template>
+
+<style lang="scss" scoped>
+    .box__wrap--about-asl {
+        padding-top: 90px;
+        padding-bottom: 220px;
+    }
+    .title {
+        margin-top: 100px;
+    }
+</style>

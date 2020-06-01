@@ -3,7 +3,7 @@
         <div class="box">
             <div class="box__section">
                 <h1 class="title title--white text--center">Our Story</h1>
-                <div class="img img--center">
+                <div class="img img--center block-our-story__img">
                     <img src="~/static/BlockOurStory/bg.png" alt="our_story_img"/>
                 </div>
                 <h2 class="title title--white block-our-story__subtitle text--center">Doing the Bright Thing Since 1979</h2>
@@ -31,8 +31,15 @@ export default {
 <style lang="scss" scoped>
     .box__wrap--our-story {
         background-color: $darkColor;
+        padding-bottom: 255px;
     }
     .block-our-story__subtitle {
         font-size: 24px;
+    }
+    .block-our-story__img {
+        margin-bottom: 10px;
+    }
+    .block-our-story__subtitle {
+        margin-bottom: 25px;
     }
 </style>
