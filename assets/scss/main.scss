@@ -25,6 +25,10 @@ $darkColor: #191723;
     color: white;
 }
 
+.title--center {
+    text-align: center;
+}
+
 .title--cover {
     font-size: white;
 }
@@ -45,6 +49,10 @@ $darkColor: #191723;
     font-weight: normal;
 }
 
+.text--center {
+    text-align: center;
+}
+
 .text--white {
     color: white;
 }
@@ -53,28 +61,12 @@ $darkColor: #191723;
     font-weight: bold;
 }
 
-// .btn {
-//     background-color: $mainColor;
-//     color: white;
-//     font-size: 14px;
-//     text-transform: uppercase;
-//     font-family: 'Lato';
-//     font-weight: bold;
-//     border-radius: 20px;
-//     padding: 13px;
-//     border: none;
-//     background-image: url('/static/Icons/icon_button.png') no-repeat left center;
-//     padding-left:20px;
-//     &:hover {
-//         opacity: 0.8;
-//         cursor: pointer;
-//     }
-//     &:focus {
-//         outline: none;
-//     }
-// }
+.img {
+    display: flex;
+    // width: 100%;
+}
 
-  
-// .btn--no-bg {
-// background-color: transparent;
-// }
+.img--center {
+    justify-content: center;
+    align-items: center;
+}

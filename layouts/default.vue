@@ -34,10 +34,13 @@ export default {
 }
 
 .box {
-  width: 75%;
+  width: 70%;
   display: flex;
   justify-content: space-between;
   align-content: center;
+  @media only screen and (max-width: 1920px) {
+    width: 60%;
+  }
 }
 
 .box--column {

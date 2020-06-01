@@ -2,8 +2,10 @@
     <div class="box__wrap box__wrap--padding box__wrap--our-story">
         <div class="box">
             <div class="box__section">
-                <h1 class="title title--white">Our Story</h1>
-                <img src="~/static/BlockOurStory/bg.png" alt="our_story_img"/>
+                <h1 class="title title--white title--center">Our Story</h1>
+                <div class="img img--center">
+                    <img src="~/static/BlockOurStory/bg.png" alt="our_story_img"/>
+                </div>
                 <h2 class="title title--white block-our-story__subtitle">Doing the Bright Thing Since 1979</h2>
                 <p class="text text--white">It all began with a thermistor disk. The year was 1979 and, at 
                     out-of-the-way tradeshow, our president discovered a technology 

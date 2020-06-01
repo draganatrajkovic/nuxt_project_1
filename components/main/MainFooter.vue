@@ -2,7 +2,7 @@
     <div class="box__wrap box__wrap--footer">
         <div class="box box--column">
             <div class="box__section box__section--inline box__section--top-align">
-                <div class=" box__section box__section--footer">
+                <div class="img">
                     <img src="~/static/MainFooter/logo.png" alt="footer-logo"/>
                 </div>
                 <div class=" box__section box__section--footer">
@@ -45,7 +45,7 @@
                 </div>
             </div>
             <div>
-                <p>C ASL Lignhting. All RIghts reserved. Designed by <span class="text__footer">Forwardslash.</span></p>
+                <p class="text__footer">C ASL Lignhting. All RIghts reserved. Designed by <span class="text__footer--bold-white">Forwardslash.</span></p>
             </div>
         </div>
     </div>
@@ -80,6 +80,9 @@ export default {
         font-size: 14px;
         font-family: 'Lato', sans-serif;
         font-weight: normal;
+        color: #3b374f;
+    }
+    .text__footer--bold-white {
         color: white;
     }
     .text__footer--upper {

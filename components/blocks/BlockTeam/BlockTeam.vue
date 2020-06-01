@@ -1,7 +1,7 @@
 <template>
     <div class="box__wrap box__wrap--padding">
         <div class="box box--column">
-            <h1 class="title">A team plugged into yours </h1>
+            <h1 class="title title--center">A team plugged into yours </h1>
             <div class="box__section box__section--inline box__section--workers">
                 <!-- <div class="box__section box__section--inline box__section--workers"> -->
                     <div v-for="(worker, index) in team" :key="index" class="single-worker" >

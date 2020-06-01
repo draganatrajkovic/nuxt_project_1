@@ -9,14 +9,25 @@
             <div class="box__section box__section--inline">
                 <div class="drop-down drop-down__projects" v-for="(project, index) in projects" :key="index">
                     <div @click="handleDropDown(project.id)" class="drop-down__content">
-                        <img :src="require(`./../../../static/BlockProject/${project.icon}`)" alt="project-icon"/>
-                        <p class="text text--bold">{{project.title}}</p>
-                        <img src="~/static/Icons/icon_arrow-bottom_drop-down.png" alt="bottom-arrow"/>
+                        <div class="drop-down__title">
+                            <div class="img">
+                                <img :src="require(`./../../../static/BlockProject/${project.icon}`)" alt="project-icon"/>
+                            </div>
+                            <p class="text text--bold">{{project.title}}</p>
+                            <div class="img">
+                                <img src="~/static/Icons/icon_arrow-bottom_drop-down.png" alt="bottom-arrow"/>
+                            </div>
+                        </div>
+                        <div class="drop-down__border">
+                            <div class="drop-down__border_start"></div>
+                            <div class="drop-down__border_arrow"></div>
+                            <div class="drop-down__border_end"></div>
+                        </div>
                     </div>
                 </div>
             </div>
             <div class="box__section box__section--inline box__section--reverse">
-                <div class="box__img--half">
+                <div class="box__img--half img img--center">
                     <img src="~/static/BlockProject/product_gradient_01.png" alt="project_img"/>
                 </div>
                 <div class="box__section box__section--half">
@@ -68,18 +79,29 @@ export default {
         align-items: center;
         width: 30%;
         margin: 20px;
-        border-bottom: 1px solid $darkColor;
-        &:hover {
-            background-color: violet;
+        &:hover .drop-down__border {
+            visibility: visible;
+            // height: 10px;
+        }
+        &:hover .drop-down__content {
+            border: none;
         }
     }
     .drop-down__content {
         padding: 0 10px;
         width: 100%;
         display: flex;
+        flex-direction: column;
+        align-items: center;
+        border-bottom: 1px solid $darkColor;
+    }
+    .drop-down__title {
+        width: 100%;
+        display: flex;
         justify-content: space-between;
         align-items: center;
     }
+    
     .block-project__list {
         list-style: none;
         li::before {
@@ -99,5 +121,27 @@ export default {
     }
     .btn__project {
         width: 250px;
+    }
+    .drop-down__border {
+        display: flex;
+        width: 100%;
+        height: 10px;
+        height: 7px;
+        visibility: hidden;
+        .drop-down__border_start {
+            background: linear-gradient(to right, #ffd86a, #fff8e4);
+            width: 50%;
+        }
+        .drop-down__border_arrow {
+            border: solid #fff8e4;
+            border-width: 0 5px 5px 0;
+            display: inline-block;
+            padding: 5px;
+            transform: rotate(45deg);
+        }
+        .drop-down__border_end {
+            background: linear-gradient(to right, #fff8e4, #b4e2ff);
+            width: 50%;
+        }
     }
 </style>

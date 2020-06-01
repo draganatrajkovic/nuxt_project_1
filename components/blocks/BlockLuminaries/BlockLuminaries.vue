@@ -11,7 +11,7 @@
                 </div>
             </div>
             <div class="box__section box__section--inline">
-                <div class="box__img--half">
+                <div class="box__img--half img">
                     <img src="~/static/BlockLuminaries/bg.png" alt="luminaries_img"/>
                 </div>
                 <div class="box__section box__section--half">
