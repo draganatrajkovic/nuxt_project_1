@@ -10,11 +10,11 @@
                 <div class="drop-down drop-down__projects" v-for="(project, index) in projects" :key="index">
                     <div @click="handleDropDown(project.id)" class="drop-down__content">
                         <div class="drop-down__title">
-                            <div class="img">
+                            <div class="img img--center">
                                 <img :src="require(`./../../../static/BlockProject/${project.icon}`)" alt="project-icon"/>
                             </div>
                             <p class="text text--bold">{{project.title}}</p>
-                            <div class="img">
+                            <div class="img img--center">
                                 <img src="~/static/Icons/icon_arrow-bottom_drop-down.png" alt="bottom-arrow"/>
                             </div>
                         </div>
@@ -79,9 +79,11 @@ export default {
         align-items: center;
         width: 30%;
         margin: 20px;
+        &:hover {
+            cursor: pointer;
+        }
         &:hover .drop-down__border {
-            visibility: visible;
-            // height: 10px;
+            opacity: 1;
         }
         &:hover .drop-down__content {
             border: none;
@@ -127,7 +129,7 @@ export default {
         width: 100%;
         height: 10px;
         height: 7px;
-        visibility: hidden;
+        opacity: 0;
         .drop-down__border_start {
             background: linear-gradient(to right, #ffd86a, #fff8e4);
             width: 50%;

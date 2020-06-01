@@ -4,7 +4,7 @@
         <div class="img img--center">
             <img :src="require(`./../../../static/BlockTeam/${worker.img}`)">
         </div>
-        <h2 class="title title--center block-team__subtitle">{{worker.name}}</h2>
+        <h2 class="title text--center block-team__subtitle">{{worker.name}}</h2>
         <p class="text text--center block-team__text">{{worker.position}}</p>
     </div>
 </template>

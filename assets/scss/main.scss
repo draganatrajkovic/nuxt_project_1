@@ -9,6 +9,10 @@ body {
     overflow-x: hidden;
 }
 
+div:hover {
+    transition:all 0.3s ease;
+}
+
 $mainColor: #2e2b3d;
 $lightColor: #ffd86a;
 $neutralColor: #b6b8bc;
@@ -23,10 +27,6 @@ $darkColor: #191723;
 
 .title--white {
     color: white;
-}
-
-.title--center {
-    text-align: center;
 }
 
 .title--cover {
@@ -63,7 +63,6 @@ $darkColor: #191723;
 
 .img {
     display: flex;
-    // width: 100%;
 }
 
 .img--center {

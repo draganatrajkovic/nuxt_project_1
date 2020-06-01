@@ -7,45 +7,45 @@
                 </div>
                 <div class=" box__section box__section--footer">
                     <p class="text__footer--upper">Company</p>
-                    <p class="text__footer">
+                    <p class="text__footer--white">
                         725 East State Street
                         trenton, NY 08609
                         info@asllightning.com
                         (800) 369-1101
                     </p>
                     <div class="box__section box__section--inline box__footer-seg-social">
-                        <div class="footer__social footer__twitter"></div>
-                        <div class="footer__social footer__instagram"></div>
-                        <div class="footer__social footer__facebook"></div>
+                        <div class="footer__social footer__twitter" @click="handleTwitter"></div>
+                        <div class="footer__social footer__instagram" @click="handleInstagram"></div>
+                        <div class="footer__social footer__facebook" @click="handleFacebook"></div>
                     </div>
                 </div>
                 <div class=" box__section box__section--footer">
                     <p class="text__footer--upper">Company</p>
-                    <a class="text__footer">Products</a>
-                    <a class="text__footer">About us</a>
-                    <a class="text__footer">Technology</a>
-                    <a class="text__footer">Resources</a>
-                    <a class="text__footer">Inspiration</a>
+                    <a class="text__footer--white footer__link" href="#">Products</a>
+                    <a class="text__footer--white footer__link" href="#">About us</a>
+                    <a class="text__footer--white footer__link" href="#">Technology</a>
+                    <a class="text__footer--white footer__link" href="#">Resources</a>
+                    <a class="text__footer--white footer__link" href="#">Inspiration</a>
                 </div>
                 <div class=" box__section box__section--footer">
                     <p class="text__footer--upper">Customer Service</p>
-                    <a class="text__footer">Contact us</a>
-                    <a class="text__footer">Rep Locator</a>
-                    <a class="text__footer">Shipping Information</a>
+                    <a class="text__footer--white footer__link" href="#">Contact us</a>
+                    <a class="text__footer--white footer__link" href="#">Rep Locator</a>
+                    <a class="text__footer--white footer__link" href="#">Shipping Information</a>
                 </div>
-                <div class=" box__section box__section--footer">
+                <div class="box__section box__section--footer">
                     <p class="text__footer--upper">Stay up to date</p>
-                    <input placeholder="info@asllightning.com"/>
-                </div>
-                <div class=" box__section box__section--footer">
-                    <div class="btn btn--no-bg btn__footer" @click="handleSubscribe">
-                        <div class="btn__icon"></div>
-                        <div class="btn__text"><p>Subscribe</p></div>
-                    </div>
+                    <form class="box__section box__section--inline box__section--footer__sub">
+                        <input class="footer__input" v-model="email" placeholder="info@asllightning.com"/>
+                        <div class="btn btn--no-bg btn__footer" @click="handleSubscribe">
+                            <div class="btn__icon"></div>
+                            <div class="btn__text"><p>Subscribe</p></div>
+                        </div>
+                    </form>
                 </div>
             </div>
             <div>
-                <p class="text__footer">C ASL Lignhting. All RIghts reserved. Designed by <span class="text__footer--bold-white">Forwardslash.</span></p>
+                <p class="text__footer">C ASL Lignhting. All RIghts reserved. Designed by <span class="text__footer--white">Forwardslash.</span></p>
             </div>
         </div>
     </div>
@@ -53,6 +53,30 @@
 
 <script>
 export default {
+    data() {
+        return {
+            email:''
+        }
+    },
+    methods: {
+        handleSubscribe() {
+            if (this.email === '') {
+                alert('Please insert you email!')
+            } else {
+                alert('Thank you for subscribe '  + this.email + '!')
+                this.email = ''
+            }
+        },
+        handleTwitter() {
+            window.location.href = "https://twitter.com/"
+        },
+        handleInstagram() {
+            window.location.href = "https://www.instagram.com/"
+        },
+        handleFacebook() {
+            window.location.href = "https://www.facebook.com/"
+        }
+    }
 }
 </script>
 
@@ -82,7 +106,7 @@ export default {
         font-weight: normal;
         color: #3b374f;
     }
-    .text__footer--bold-white {
+    .text__footer--white {
         color: white;
     }
     .text__footer--upper {
@@ -93,9 +117,16 @@ export default {
     .btn__footer {
         width: 130px;
     }
+    .box__footer-seg-social {
+        justify-content: flex-start;
+    }
     .footer__social {
         width: 20px;
         height: 20px;
+        padding: 5px;
+        &:hover {
+            cursor: pointer;
+        }
     }
     .footer__twitter {
         background: url('./../../static/MainFooter/icon_twitter.png') no-repeat center center;
@@ -114,5 +145,19 @@ export default {
         &:hover {
             background: url('./../../static/MainFooter/icon_facebook_hover.png') no-repeat center center;
         }
+    }
+    .footer__link {
+        text-decoration: none;
+        transition:all 0.3s ease;
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+    .footer__input {
+        color: white;
+    }
+    .box__section--footer__sub {
+        align-items: center;
+        justify-content: space-between;
     }
 </style>
