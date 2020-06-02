@@ -14,21 +14,29 @@
                 </form>
             </div>
             <div v-else class="nav-links box__section box__section--inline">
-                <div class="nav-links__single-link">
-                    <nuxt-link to="/inspiration" >Inspiration </nuxt-link>
-                    <div class="nav-links__single-link__border"></div>
+                <div class="nav-link__content">
+                    <div class="nav-link__link">
+                        <nuxt-link to="/inspiration" >Inspiration </nuxt-link>
+                    </div>
+                    <div class="nav-link__border"></div>
                 </div>
-                <div class="nav-links__single-link">
-                    <nuxt-link to="/customization" >Customization </nuxt-link>
-                    <div class="nav-links__single-link__border"></div>
+                <div class="nav-link__content">
+                    <div class="nav-link__link">
+                        <nuxt-link to="/customization" >Customization </nuxt-link>
+                    </div>
+                    <div class="nav-link__border"></div>
                 </div>
-                <div class="nav-links__single-link">
-                    <nuxt-link to="/company" >Company</nuxt-link>
-                    <div class="nav-links__single-link__border"></div>
+                <div class="nav-link__content">
+                    <div class="nav-link__link">
+                        <nuxt-link to="/company" >Company</nuxt-link>
+                    </div>
+                    <div class="nav-link__border"></div>
                 </div>
-                <div class="nav-links__single-link">
-                    <nuxt-link to="/contact" >Contact</nuxt-link>
-                    <div class="nav-links__single-link__border"></div>
+                <div class="nav-link__content">
+                    <div class="nav-link__link">
+                        <nuxt-link to="/contact" >Contact</nuxt-link>
+                    </div>
+                    <div class="nav-link__border"></div>
                 </div>
             </div>
             <div class="nav-search img img--center">
@@ -77,12 +85,16 @@ export default {
 </script>
 <style lang="scss" scoped>
     .box__navigation {
-        padding: 15px;
+        padding-top: 25px;
         align-items: center;
+    }
+    .nav-img a img {
+        // height: 100%;
+        // margin-top: -6px;
     }
     .nav-links {
         width: 60%;
-        align-items: stretch;
+        height: 100%;
     }
     .nav-links a {
         text-decoration: none;
@@ -98,30 +110,43 @@ export default {
         }
     }
     .btn__icon__nav {
-        background: url('./../../static/MainNavigation/icon_product_finder.png') no-repeat center center;
+        background: url('./../../static/MainNavigation/icon_product_finder.png') no-repeat;
     }
-    .nav-links__single-link {
+    .nav-link__content {
         height: 100%;
-        &:hover .nav-links__single-link__border {
-            visibility: visible;
-            transition: 0.3s;
+        &:hover .nav-link__border {
+            opacity: 1;
+            transition: opacity .3s ease-in-out;
         }
     }
-    .nav-links__single-link__border {
-        visibility: hidden;
-        height: 3px;
-        background: linear-gradient(to right, #ffd86a, #fff8e4, #b4e2ff);
+    .nav-link__link, .nav-link__border {
+        height: 50%;
+        display: flex;
+        align-items: flex-end;
+    }
+    .nav-link__border {
+        opacity: 0;
+        border-bottom: 4px solid transparent;
+        border-image: linear-gradient(to right, #ffd86a, #fff8e4, #b4e2ff);
+        border-image-slice: 1;
     }
     .nav-search:hover img {
         cursor: pointer;
         transform: scale(1.2);
         transition-duration: 0.3s;
     }
+    .nav-search-bar form {
+        height: 100%;
+        display: flex;
+        align-items: center;
+    }
     .nav-search-bar input {
+        width: 100%;
         padding: 10px;
         border-radius: 25px;
         width: 100%;
-        // transition:all 0.3s ease;
+        opacity: 1;
+        transition: opacity .3s ease-in-out;
         &:focus {
             outline: none;
         }

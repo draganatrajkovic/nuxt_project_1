@@ -4,7 +4,14 @@
             <div class="box__section block-luminaries__header">
                 <div class="box__section box__section--inline block-luminaries__title">
                     <h1 class="title">The Luminaries Next Door</h1>
-                    <!-- <Slider /> -->
+                    <!-- <VueSlickCarousel 
+                        :arrows="true" 
+                        :dots="true" 
+                        class="slider--dark slider--dark--small"
+                    > 
+                        <div>test1</div>
+                        <div>test2 </div>
+                    </VueSlickCarousel> -->
                 </div>
                 <div class="block-luminaries__text">
                     <p class="text">Big minds. Deep hearts. Small attitudes.</p>
@@ -31,11 +38,13 @@
 
 
 <script>
-// import Slider from '~/components/parts/Slider'
+import VueSlickCarousel from 'vue-slick-carousel'
+import 'vue-slick-carousel/dist/vue-slick-carousel.css'
+import 'vue-slick-carousel/dist/vue-slick-carousel-theme.css'
 import {luminariesService} from './LuminariesService'
 export default {
     components: {
-        // Slider
+        VueSlickCarousel
     },
     data() {
         return {
@@ -64,10 +73,12 @@ export default {
         margin-bottom: -10px;
     }
     .block-luminaries__list-element {
-        // padding: 2px;
+        // padding: 0 10px;
         &:hover {
             background-color: $lightColor;
             cursor: pointer;
+            opacity: 1;
+            transition: opacity .3s ease-in-out;
         }
     }
     .block-luminaries__list-element:hover .block-luminaries__list-element__title {

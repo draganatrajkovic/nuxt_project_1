@@ -37,6 +37,8 @@ export default {
         margin: 0 10px;
         text-decoration: none;
         &:hover {
+            opacity: 1;
+            transition: opacity .3s ease-in-out;
             text-decoration: underline;
         }
     }

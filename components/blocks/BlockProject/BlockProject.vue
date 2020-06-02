@@ -1,23 +1,26 @@
 <template>
     <div class="box__wrap box__wrap--padding box__wrap--project">
         <div class="box box--column">
-            <div class="box__section box__section__project__title">
+            <div class="box__section project__title">
                 <h1 class="title">Your project is no place to iterate.</h1>
                 <div class="box__section--half">
                     <p class="text">That’s why our focus is on creating precisely what you asked for the 
                         first time around - no comprises or surprises.
-                        Here’s how:</p>
+                        Here’s how:
+                    </p>
                 </div>
             </div>
-            <div class="box__section box__section--inline box__section__project__tabs">
-                <div class="drop-down drop-down__projects" v-for="(project, index) in projects" :key="index">
+            <div class="box__section box__section--inline project__tabs">
+                <div class="project__drop-down" v-for="(project, index) in projects" :key="index">
                     <div @click="handleDropDown(project.id)" class="drop-down__content">
-                        <div class="drop-down__title">
-                            <div class="img img--center">
+                        <div class="drop-down__tab">
+                            <div class="img img--center tab__icon">
                                 <img :src="require(`./../../../static/BlockProject/${project.icon}`)" alt="project-icon"/>
                             </div>
-                            <p class="text text--bold">{{project.title}}</p>
-                            <div class="img img--center">
+                            <div class="tab__title">
+                                <p class="text text--bold">{{project.title}}</p>
+                            </div>
+                            <div class="img img--center tab__arrow">
                                 <img src="~/static/Icons/icon_arrow-bottom_drop-down.png" alt="bottom-arrow"/>
                             </div>
                         </div>
@@ -30,19 +33,19 @@
                 </div>
             </div>
             <div class="box__section box__section--inline box__section--reverse">
-                <div class="box__img--half img img--center">
+                <div class="box__img--half img img--center project__img">
                     <img src="~/static/BlockProject/product_gradient_01.png" alt="project_img"/>
                 </div>
-                <div class="box__section box__section--half">
-                    <h2 class="title block-project__subtitle">{{project.title}}</h2>
+                <div class="box__section box__section--half project__changeable-content">
+                    <h2 class="title project__subtitle">{{project.title}}</h2>
                     <p class="text">{{project.content}}</p>
-                    <div class="list block-project__list">
-                        <ul v-for="(li, index) in project.list" :key="index" class="list-element">
-                            <li class="text block-project__list_li">{{li}}</li>
+                    <div class="list project__list">
+                        <ul v-for="(li, index) in project.list" :key="index" class="project__list-element">
+                            <li class="text project__li">{{li}}</li>
                         </ul>
                     </div>
-                    <h3 class="text text--bold block-project__note-title">{{project.noteTitle}}</h3>
-                    <p class="text text--normal block-project__note-text">{{project.noteContent}}</p>
+                    <h3 class="text text--bold project__note-title">{{project.noteTitle}}</h3>
+                    <p class="text text--normal project__note-text">{{project.noteContent}}</p>
                     <div class="btn btn--referse btn__project" @click="handleCustomCapabilities">
                         <div class="btn__icon"></div>
                         <div class="btn__text"><p>{{project.button}}</p></div>
@@ -78,25 +81,29 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-    .title {
-        margin-bottom: 15px;
+    .box__wrap--project {
+        padding-top: 120px;
     }
-    .box__section__project__title {
+    .title {
+        margin-bottom: 20px;
+    }
+    .project__title {
         margin-bottom: 60px;
     }
-    .box__section__project__tabs {
+    .project__tabs {
         margin-bottom: 65px;
     }
-    .drop-down__projects {
+    .project__drop-down {
         display: flex;
         justify-content: center;
         align-items: center;
-        width: 30%;
+        width: 33%;
         &:hover {
             cursor: pointer;
         }
         &:hover .drop-down__border {
             opacity: 1;
+            transition: opacity .3s ease-in-out;
         }
         &:hover .drop-down__content {
             border: none;
@@ -110,17 +117,36 @@ export default {
         align-items: center;
         border-bottom: 1px solid $darkColor;
     }
-    .drop-down__title {
+    .drop-down__tab {
         width: 100%;
         display: flex;
         justify-content: space-between;
         align-items: center;
     }
+    .tab__icon, .tab__title, .tab__arrow {
+        display: flex;
+        align-items: center;
+        padding: 0 10px;
+    }
+    .tab__icon {
+        width: 10%;
+        justify-content: flex-end;
+    }
+    .tab__title {
+        width: 85%;
+        justify-content: center;
+    }
+    .tab__title p {
+        letter-spacing: 0;
+    }
+    .tab__arrow {
+        width: 5%;
+    }
     
-    .block-project__list_li {
+    .project__li {
         list-style: none;
     }
-    .block-project__list {
+    .project__list {
         list-style: none;
         margin-top: 30px;
         li::before {
@@ -132,20 +158,20 @@ export default {
             margin-left: -1em;
         }
     }
-    .list-element {
+    .project__list-element {
         margin: 0;
         padding: 0;
     }
-    .block-project__subtitle {
+    .project__subtitle {
         font-size: 36px;
         margin-bottom: 20px;
     }
-    .block-project__note-title {
+    .project__note-title {
         font-size: 22px;
         margin-top: 90px;
         margin-bottom: 0;
     }
-    .block-project__note-text {
+    .project__note-text {
         margin-bottom: 70px;
     }
     .btn__project {
@@ -173,4 +199,13 @@ export default {
             width: 50%;
         }
     }
+    .project__img {
+        align-items: flex-start;
+        justify-content: flex-end;
+        padding-top: 30px;
+    }
+    // .lock__project__changeable-content {
+    //     opacity: 1;
+    //     transition: opacity .3s ease-in-out;
+    // }
 </style>

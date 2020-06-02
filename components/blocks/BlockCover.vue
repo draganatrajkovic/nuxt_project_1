@@ -1,8 +1,8 @@
 <template>
     <div class="box__wrap box__wrap--cover">
         <div class="box">
-            <div class="box__section">
-                <div class="box__section--half">
+            <div class="box__section cover__content">
+                <div class="box__section--half ">
                     <h1 class="title title--cover">The most cost-efficient way to build a light? Once.</h1> 
                 </div>
                 <div class="btn" @click="handleMoreOnThat">
@@ -30,7 +30,12 @@ export default {
         background-size: 100%;
         background-repeat: no-repeat;
         background-position: center;
-        height: 750px;
+        height: 765px;
+    }
+    .cover__content {
+        height: 100%;
+        // display: flex;
+        // align-items: center;
     }
 
 </style>

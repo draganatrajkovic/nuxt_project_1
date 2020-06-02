@@ -2,13 +2,14 @@
     <div class="box__wrap box__wrap--padding box__wrap--our-story">
         <div class="box">
             <div class="box__section">
-                <!-- <h1 class="title title--white text--center">Our Story</h1>
+                <h1 class="title title--white text--center">Our Story</h1>
                 <div class="img img--center block-our-story__img">
                     <img src="~/static/BlockOurStory/bg.png" alt="our_story_img"/>
-                </div> -->
+                </div>
                 <VueSlickCarousel 
-                    :arrows="true" 
+                    :arrows="false" 
                     :dots="true" 
+                    ref="banner"
                     class="slider--white"
                 >
                     <div>
@@ -35,6 +36,11 @@
                     </div>
                 </VueSlickCarousel>
             </div>
+
+            <div class="">
+                <a href="javascript:;" @click="slickNext">Next</a>
+                <a href="javascript:;" @click="slickPrev">Prev</a>
+            </div>
         </div>
     </div>
 </template>
@@ -47,7 +53,15 @@ import 'vue-slick-carousel/dist/vue-slick-carousel-theme.css'
 export default {
     components: {
         VueSlickCarousel
-    }
+    },
+    methods: {
+        slickNext() {
+            this.$refs.banner.next();
+        },
+        slickPrev() {
+            this.$refs.banner.prev();
+        }
+    },
 }
 </script>
 

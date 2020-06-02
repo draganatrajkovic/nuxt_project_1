@@ -126,6 +126,7 @@ a:hover {
   cursor: pointer;
 }
 
+//slider white
 .slider--white {
   .slick-prev, .slick-next {
     width: 71px;
@@ -162,4 +163,11 @@ a:hover {
   }
 }
 
+//slider dark
+.slider--dark {
+  background: yellow;
+}
+.slider--dark--small {
+  width: 30%;
+}
 </style>
