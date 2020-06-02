@@ -4,7 +4,7 @@
             <div class="box__section block-luminaries__header">
                 <div class="box__section box__section--inline block-luminaries__title">
                     <h1 class="title">The Luminaries Next Door</h1>
-                    <Slider />
+                    <!-- <Slider /> -->
                 </div>
                 <div class="block-luminaries__text">
                     <p class="text">Big minds. Deep hearts. Small attitudes.</p>
@@ -31,11 +31,11 @@
 
 
 <script>
-import Slider from '~/components/parts/Slider'
+// import Slider from '~/components/parts/Slider'
 import {luminariesService} from './LuminariesService'
 export default {
     components: {
-        Slider
+        // Slider
     },
     data() {
         return {

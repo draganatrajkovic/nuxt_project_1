@@ -126,4 +126,40 @@ a:hover {
   cursor: pointer;
 }
 
+.slider--white {
+  .slick-prev, .slick-next {
+    width: 71px;
+    height: 71px;
+  }
+  .slick-prev:before {
+    content: url('./../static/PartsSlider/arrow_left--white.png');
+    transition: opacity .3s ease-in-out;
+  }
+  .slick-prev:hover:before {
+    content: url('./../static/PartsSlider/arrow_left--white_hover.png');
+    opacity: 1;
+  }
+  .slick-prev {
+    left: -100px;
+  }
+  .slick-next {
+    right: -100px;
+  }
+  .slick-next:before {
+    content: url('./../static/PartsSlider/arrow_right--white.png');
+    transition: opacity .3s ease-in-out;
+  }
+  .slick-next:hover:before {
+    content: url('./../static/PartsSlider/arrow_right--white_hover.png');
+    opacity:1;
+  }
+  .slick-dots li button:before {
+    color: #47454f;
+  }
+  .slick-dots li.slick-active button:before {
+    opacity: 1;
+    color: white;
+  }
+}
+
 </style>

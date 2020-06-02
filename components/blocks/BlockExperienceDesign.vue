@@ -2,7 +2,9 @@
     <div class="box__wrap box__wrap--experience-design">
         <div class="box">
             <div class="box__section">
-                <h1 class="title">Experience design in a new light</h1>
+                <div class="box__section--half">
+                    <h1 class="title">Experience design in a new light</h1>
+                </div>
                 <p class="text">Contact us to get started</p>
                 <div class="btn btn--referse btn__project" @click="handleLetsTalk">
                     <div class="btn__icon"></div>
