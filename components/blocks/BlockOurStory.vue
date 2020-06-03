@@ -6,7 +6,14 @@
                 <div class="img img--center block-our-story__img">
                     <img src="~/static/BlockOurStory/bg.png" alt="our_story_img"/>
                 </div>
-                <VueSlickCarousel :arrows="false" :dots="false" ref="banner"class="slider--white">
+                <VueSlickCarousel 
+                    :arrows="false" 
+                    :dots="false" 
+                    :autoplay="true" 
+                    :autoplayHoverPause ="false"
+                    ref="banner" 
+                    class="slider--white"
+                >
                     <div>
                         <h2 class="title title--white block-our-story__subtitle text--center">Doing the Bright Thing Since 1979</h2>
                         <p class="text text--white text--center">It all began with a thermistor disk. The year was 1979 and, at 
@@ -58,12 +65,12 @@ export default {
     },
     methods: {
         slickNext() {
+            this.$refs.banner.next();
             if (this.selected === 3) {
                 this.selected = 1
             } else {
                 this.selected += 1
             }
-            this.$refs.banner.next();
         },
         slickPrev() {
             this.$refs.banner.prev();
@@ -125,5 +132,4 @@ export default {
         justify-content: center;
         align-content: center;
     }
-
 </style>

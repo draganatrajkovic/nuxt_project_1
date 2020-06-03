@@ -1,41 +1,51 @@
 <template>
     <div class="box__wrap box__wrap--padding box__wrap--luminaries">
         <div class="box box--column">
-            <div class="box__section block-luminaries__header">
-                <div class="box__section box__section--inline block-luminaries__title">
+            <div class="box__section luminaries__header">
+                <div class="box__section box__section--inline luminaries__title">
                     <h1 class="title">The Luminaries Next Door</h1>
-                    <!-- <VueSlickCarousel 
-                        :arrows="true" 
-                        :dots="true" 
-                        class="slider--dark slider--dark--small"
-                    > 
-                        <div>test1</div>
-                        <div>test2 </div>
-                    </VueSlickCarousel> -->
                 </div>
-                <div class="block-luminaries__text">
+                <div class="luminaries__text">
                     <p class="text">Big minds. Deep hearts. Small attitudes.</p>
                 </div>
             </div>
-            <div class="box__section box__section--inline block-luminaries__content">
-                <div class="box__img--half img">
-                    <img src="~/static/BlockLuminaries/bg.png" alt="luminaries_img"/>
-                </div>
-                <div class="box__section box__section--half">
-                    <div v-for="(lum, index) in luminaries" :key="index" class="list-element--no-bullets block-luminaries__list-element" >
-                        <div @click="handleDropDown(lum.id)">
-                            <h3 class="title block-luminaries__list-element__title">{{lum.title}}</h3>
-                        </div>
+
+            <div class="box__section box__section--inline box__section--reverse luminaries__content">
+                <div class="box__section box__section--half luminaries__list">
+                    <div v-for="(lum, index) in luminaries" :key="index" 
+                        :class="isSelected[index] ? 'luminaries__list-element--selected' : 'luminaries__list-element'"
+                    >
+                        <h3 class="title luminaries__list-element__title" @click="handleDropDown(lum.id)">{{lum.title}}</h3>
                     </div>
-                    <div>
+                    <div class="luminaries__list__text">
                         <p class="text">{{lum.content}}</p>
                     </div>
+                </div>
+                <div class="box__section box__section--half luminaries__slider">
+                    <VueSlickCarousel 
+                        :arrows="false" 
+                        :dots="true" 
+                        :autoplay="true" 
+                        :autoplayHoverPause ="false"
+                        :autoplayTimeout = 1000
+                        ref="banner" 
+                        class="slider--dark"
+                    >
+                        <div>
+                             <img :src="require(`./../../../static/BlockLuminaries/${lum.images[0]}`)" class="img" alt="luminaries"/>
+                        </div>
+                        <div>
+                             <img :src="require(`./../../../static/BlockLuminaries/${lum.images[1]}`)" class="img" alt="luminaries"/>
+                        </div>
+                        <div>
+                             <img :src="require(`./../../../static/BlockLuminaries/${lum.images[2]}`)" class="img" alt="luminaries"/>
+                        </div>
+                    </VueSlickCarousel>
                 </div>
             </div>
         </div>
     </div>
 </template>
-
 
 <script>
 import VueSlickCarousel from 'vue-slick-carousel'
@@ -49,12 +59,15 @@ export default {
     data() {
         return {
             luminaries: luminariesService.all(),
-            lum:luminariesService.find(1)
+            lum:luminariesService.find(0),
+            isSelected: [true, false, false]
         }
     },
     methods: {
         handleDropDown(lumId) {
+            this.isSelected = [false, false, false]
             this.lum = this.luminaries.find(lum => lum.id == lumId )
+            this.isSelected[lumId] = true
         }
     }
 }
@@ -66,29 +79,42 @@ export default {
         padding-top: 130px;
         padding-bottom: 180px;
     }
-    .block-luminaries__header {
+    .luminaries__header {
         margin-bottom: 45px;
     }
-    .block-luminaries__title {
+    .luminaries__title {
         margin-bottom: -10px;
     }
-    .block-luminaries__list-element {
-        // padding: 0 10px;
+    .luminaries__list-element {
+        border-bottom: 1px solid $neutralColor;
+        padding-left: 20px;
+    }
+    .luminaries__list-element--selected {
+        background-color: $lightColor;
+        margin-left: -30px;
+        padding-left: 50px;
+        z-index: 1;
+        .luminaries__list-element__title {
+            color: $darkColor;
+        }
+    }
+    .luminaries__list-element__title:hover {
+        color: $darkColor;
+        cursor: pointer;
+    }
+    .luminaries__list-element__title {
+        font-size: 26px;
+        color: $neutralColor;
         &:hover {
-            background-color: $lightColor;
-            cursor: pointer;
+            border-bottom: none;
+            color: $darkColor;
             opacity: 1;
             transition: opacity .3s ease-in-out;
         }
     }
-    .block-luminaries__list-element:hover .block-luminaries__list-element__title {
-        color: $darkColor;
-    }
-    .block-luminaries__list-element__title {
-        font-size: 26px;
-        color: $neutralColor;
-        &:hover {
-            color: $darkColor;
-        }
+    .luminaries__slider {
+        opacity: 1;
+        transition: opacity 1s ease-in-out;
+        justify-content: flex-end;
     }
 </style>
