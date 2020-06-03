@@ -96,9 +96,13 @@ img {
   align-items: center;
   opacity: 1;
 	&:hover {
-    opacity: 0.7;
+    // opacity: 0.7;
     cursor: pointer;
-	}
+  }
+  &:hover .btn__icon {
+    transform: rotate(360deg);
+    transition: all 0.3s ease-in-out 0s;
+  }
 	&:focus {
 		outline: none;
 	}
@@ -107,7 +111,7 @@ img {
 	background: url('./../static/Icons/icon_button.png') no-repeat center center;
 	float: left;
 	width: 28px;
-	height: 25px;
+	height: 28px;
 }
 .btn__text p {
 	color: white;

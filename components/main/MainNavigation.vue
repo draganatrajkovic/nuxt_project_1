@@ -88,10 +88,7 @@ export default {
         padding-top: 25px;
         align-items: center;
     }
-    .nav-img a img {
-        // height: 100%;
-        // margin-top: -6px;
-    }
+
     .nav-links {
         width: 60%;
         height: 100%;
@@ -109,8 +106,15 @@ export default {
             color: $mainColor;
         }
     }
+    .btn:hover .btn__icon {
+        transform: scale(1.2);
+        transition: all 0.3s ease-in-out 0s;
+    }
+
     .btn__icon__nav {
         background: url('./../../static/MainNavigation/icon_product_finder.png') no-repeat;
+        width: 25px;
+        height: 15px;
     }
     .nav-link__content {
         height: 100%;
