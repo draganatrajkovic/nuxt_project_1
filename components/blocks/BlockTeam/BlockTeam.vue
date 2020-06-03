@@ -28,7 +28,7 @@ export default {
 
 <style lang="scss" scoped>
     .box__wrap--team {
-        padding-bottom: 50px;
+        padding-bottom: 40px;
     }
     .title {
         margin-bottom: 100px;

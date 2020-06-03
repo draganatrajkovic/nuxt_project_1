@@ -85,8 +85,16 @@ export default {
 </script>
 <style lang="scss" scoped>
     .box__navigation {
-        padding-top: 25px;
+        padding-top: 20px;
         align-items: center;
+    }
+    .nav-img {
+        margin-right: 60px;
+    }
+    .btn__nav {
+        width: 180px;
+        padding-top: 5px;
+        padding-bottom: 5px;
     }
 
     .nav-links {

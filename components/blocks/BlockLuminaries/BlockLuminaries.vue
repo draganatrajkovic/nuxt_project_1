@@ -77,7 +77,7 @@ export default {
     .box__wrap--luminaries {
         background-color: #eff2f4;
         padding-top: 130px;
-        padding-bottom: 180px;
+        padding-bottom: 177px;
     }
     .luminaries__header {
         margin-bottom: 45px;
@@ -87,15 +87,16 @@ export default {
     }
     .luminaries__list-element {
         border-bottom: 1px solid $neutralColor;
-        padding-left: 20px;
+        padding-left: 90px;
     }
     .luminaries__list-element--selected {
         background-color: $lightColor;
         margin-left: -30px;
-        padding-left: 50px;
+        padding-left: 120px;
         z-index: 1;
         .luminaries__list-element__title {
             color: $darkColor;
+            margin: 20px 0;
         }
     }
     .luminaries__list-element__title:hover {
@@ -116,5 +117,8 @@ export default {
         opacity: 1;
         transition: opacity 1s ease-in-out;
         justify-content: flex-end;
+    }
+    .luminaries__list__text {
+        margin-left: 90px;
     }
 </style>

@@ -39,7 +39,6 @@ export default {
   justify-content: space-between;
   align-content: center;
   @media only screen and (max-width: 1920px) {
-    // width: 60%;
   }
 }
 
@@ -69,10 +68,21 @@ export default {
 
 .box__img {
   width: 100%;
+  display: flex;
 }
 
 .box__img--half {
+  display: flex;
   width: 50%;
+}
+
+.img {
+  display: flex;
+}
+
+.img--center {
+  justify-content: center;
+  align-items: center;
 }
 
 img {

@@ -9,9 +9,9 @@ body {
     overflow-x: hidden;
 }
 
-div:hover {
-    transition:all 0.3s ease;
-}
+// div:hover {
+//     transition:all 0.3s ease;
+// }
 
 $mainColor: #2e2b3d;
 $lightColor: #ffd86a;
@@ -30,7 +30,7 @@ $darkColor: #191723;
 }
 
 .title--cover {
-    font-size: white;
+    font-size: 56px;
 }
 
 .title--cover--white {
@@ -63,11 +63,3 @@ $darkColor: #191723;
     font-weight: bold;
 }
 
-.img {
-    display: flex;
-}
-
-.img--center {
-    justify-content: center;
-    align-items: center;
-}

@@ -34,7 +34,7 @@
             </div>
             <div class="box__section box__section--inline box__section--reverse">
                 <div class="box__img--half img img--center project__img">
-                    <img src="~/static/BlockProject/product_gradient_01.png" alt="project_img"/>
+                    <img :src="require(`./../../../static/BlockProject/${project.img}`)" alt="project"/>
                 </div>
                 <div class="box__section box__section--half project__changeable-content">
                     <h2 class="title project__subtitle">{{project.title}}</h2>
@@ -204,8 +204,7 @@ export default {
         justify-content: flex-end;
         padding-top: 30px;
     }
-    // .lock__project__changeable-content {
-    //     opacity: 1;
-    //     transition: opacity .3s ease-in-out;
-    // }
+    .project__list {
+        margin-left: 22px;
+    }
 </style>

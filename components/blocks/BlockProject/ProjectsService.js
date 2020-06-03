@@ -7,7 +7,8 @@ const projects = [
         list: ['Styles', 'Finishes', 'Lenses', 'Lamp Types', 'Wattages'], 
         noteTitle: 'It’s all done in-house', 
         noteContent: '500+ models. 1,000,000+ options.The choice is yours - we’ll light the way.', 
-        button: 'View custom capabilities'
+        button: 'View custom capabilities', 
+        img: 'product_gradient_01.png'
     },
     {
         id: 2, 
@@ -17,7 +18,8 @@ const projects = [
         list: ['Lenses', 'Lamp Types', 'Wattages'], 
         noteTitle: 'It’s all done in-house', 
         noteContent: '500+ models. 1,000,000+ options.The choice is yours - we’ll light the way.', 
-        button: 'View custom capabilities'
+        button: 'View custom capabilities',
+        img: 'product_gradient_02.png'
     },
     {
         id: 3, 
@@ -27,7 +29,8 @@ const projects = [
         list: ['Finishes', 'Lenses', 'Lamp Types', 'Wattages'], 
         noteTitle: 'It’s all done in-house', 
         noteContent: '500+ models. 1,000,000+ options.The choice is yours - we’ll light the way.', 
-        button: 'View custom capabilities'
+        button: 'View custom capabilities',
+        img: 'product_gradient_03.png'
     }
 ]
 
