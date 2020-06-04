@@ -32,7 +32,7 @@
                     </div>
                 </div>
             </div>
-            <div class="box__section box__section--inline box__section--reverse">
+            <div class="box__section box__section--inline box__section--reverse project__dynamic-content">
                 <div class="box__img--half img img--center project__img">
                     <img :src="require(`./../../../static/BlockProject/${project.img}`)" alt="project"/>
                 </div>
@@ -71,7 +71,9 @@ export default {
 
     methods: {
         handleDropDown(projectId) {
-            this.project = this.projects.find(project => project.id == projectId)
+            setTimeout(() => {
+                this.project = this.projects.find(project => project.id == projectId)
+            }, 300)
         },
         handleCustomCapabilities() {
             console.log('handleCustomCapabilities')
@@ -108,6 +110,24 @@ export default {
         &:hover .drop-down__content {
             border: none;
         }
+        &:hover .drop-down__border{
+            border: transparent;
+            .drop-down__border_start {
+                background: linear-gradient(to right, #ffd86a, #fff8e4);
+                width: 50%;
+            }
+            .drop-down__border_arrow {
+                border: solid #fff8e4;
+                border-width: 0 5px 5px 0;
+                display: inline-block;
+                padding: 5px;
+                transform: rotate(45deg);
+            }
+            .drop-down__border_end {
+                background: linear-gradient(to right, #fff8e4, #b4e2ff);
+                width: 50%;
+            }
+        }
     }
     .drop-down__content {
         padding: 0 10px;
@@ -115,7 +135,14 @@ export default {
         display: flex;
         flex-direction: column;
         align-items: center;
+    }
+    .drop-down__border {
+        display: flex;
+        width: 100%;
+        height: 10px;
+        height: 7px;
         border-bottom: 1px solid $darkColor;
+        
     }
     .drop-down__tab {
         width: 100%;
@@ -177,28 +204,7 @@ export default {
     .btn__project {
         width: 250px;
     }
-    .drop-down__border {
-        display: flex;
-        width: 100%;
-        height: 10px;
-        height: 7px;
-        opacity: 0;
-        .drop-down__border_start {
-            background: linear-gradient(to right, #ffd86a, #fff8e4);
-            width: 50%;
-        }
-        .drop-down__border_arrow {
-            border: solid #fff8e4;
-            border-width: 0 5px 5px 0;
-            display: inline-block;
-            padding: 5px;
-            transform: rotate(45deg);
-        }
-        .drop-down__border_end {
-            background: linear-gradient(to right, #fff8e4, #b4e2ff);
-            width: 50%;
-        }
-    }
+    
     .project__img {
         align-items: flex-start;
         justify-content: flex-end;
@@ -206,5 +212,9 @@ export default {
     }
     .project__list {
         margin-left: 22px;
+    }
+    .project__dynamic-content {
+        opacity: 1;
+        transition: opacity 0.5 ease-in-out;
     }
 </style>

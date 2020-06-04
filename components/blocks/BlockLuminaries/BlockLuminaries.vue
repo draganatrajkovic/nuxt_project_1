@@ -76,8 +76,8 @@ export default {
 <style lang="scss" scoped>
     .box__wrap--luminaries {
         background-color: #eff2f4;
-        padding-top: 130px;
-        padding-bottom: 177px;
+        padding-top: 135px;
+        padding-bottom: 180px;
     }
     .luminaries__header {
         margin-bottom: 45px;

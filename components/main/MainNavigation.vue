@@ -8,37 +8,43 @@
                 <div class="btn__icon btn__icon__nav"></div>
                 <div class="btn__text"><p>Product Finder</p></div>
             </div>
-            <div v-if="searchBar" class="nav-search-bar nav-links">
-                <form @submit.prevent="handleSearchTerm">
-                    <input placeholder="Search term" v-model="searchTerm" />
-                </form>
-            </div>
-            <div v-else class="nav-links box__section box__section--inline">
-                <div class="nav-link__content">
-                    <div class="nav-link__link">
-                        <nuxt-link to="/inspiration" >Inspiration </nuxt-link>
-                    </div>
-                    <div class="nav-link__border"></div>
+            <transition name="slide-fade" >
+                <div v-if="searchBar" class="nav-search-bar nav-links">
+                    <form @submit.prevent="handleSearchTerm">
+                        <input placeholder="Search term" v-model="searchTerm" />
+                    </form>
                 </div>
-                <div class="nav-link__content">
-                    <div class="nav-link__link">
-                        <nuxt-link to="/customization" >Customization </nuxt-link>
+            </transition>
+
+            <!-- <transition name="slide-fade" > -->
+                <div v-if="!searchBar" class="nav-links box__section box__section--inline">
+                    <div class="nav-link__content">
+                        <div class="nav-link__link">
+                            <nuxt-link to="/inspiration" >Inspiration </nuxt-link>
+                        </div>
+                        <div class="nav-link__border"></div>
                     </div>
-                    <div class="nav-link__border"></div>
-                </div>
-                <div class="nav-link__content">
-                    <div class="nav-link__link">
-                        <nuxt-link to="/company" >Company</nuxt-link>
+                    <div class="nav-link__content">
+                        <div class="nav-link__link">
+                            <nuxt-link to="/customization" >Customization </nuxt-link>
+                        </div>
+                        <div class="nav-link__border"></div>
                     </div>
-                    <div class="nav-link__border"></div>
-                </div>
-                <div class="nav-link__content">
-                    <div class="nav-link__link">
-                        <nuxt-link to="/contact" >Contact</nuxt-link>
+                    <div class="nav-link__content">
+                        <div class="nav-link__link">
+                            <nuxt-link to="/company" >Company</nuxt-link>
+                        </div>
+                        <div class="nav-link__border"></div>
                     </div>
-                    <div class="nav-link__border"></div>
+                    <div class="nav-link__content">
+                        <div class="nav-link__link">
+                            <nuxt-link to="/contact" >Contact</nuxt-link>
+                        </div>
+                        <div class="nav-link__border"></div>
+                    </div>
                 </div>
-            </div>
+            <!-- </transition> -->
+            
             <div class="nav-search img img--center">
                 <img src="~/static/MainNavigation/icon_search.png" @click="handleSearch" alt="search-icon"/>
             </div>
@@ -67,11 +73,7 @@ export default {
     },
     methods: {
         handleSearch() {
-            if (this.searchBar === true) {
-                this.searchBar = false
-            } else {
-                this.searchBar = true
-            }
+            this.searchBar = !this.searchBar
         },
         handleSearchTerm() {
             alert(this.searchTerm)
@@ -85,6 +87,7 @@ export default {
 </script>
 <style lang="scss" scoped>
     .box__navigation {
+        justify-content: space-between;
         padding-top: 20px;
         align-items: center;
     }
@@ -126,6 +129,7 @@ export default {
     }
     .nav-link__content {
         height: 100%;
+        padding-top: 7px;
         &:hover .nav-link__border {
             opacity: 1;
             transition: opacity .3s ease-in-out;
@@ -162,5 +166,22 @@ export default {
         &:focus {
             outline: none;
         }
+    }
+
+    //searchbar animation
+    .slide-fade-enter-active {
+        transition: all .3s ease;
+    }
+    .slide-fade-leave-active {
+        // transition: all .8s cubic-bezier(1.0, 0.5, 0.8, 1.0);
+    }
+    .slide-fade-enter
+    /* .slide-fade-leave-active below version 2.1.8 */ {
+        transform: translateX(10px);
+        opacity: 0;
+    }
+    .slide-fade-leave-to {
+        transform: translateX(10px);
+        opacity: 0;
     }
 </style>

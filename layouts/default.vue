@@ -177,11 +177,4 @@ a:hover {
   }
 }
 
-//slider dark
-.slider--dark {
-  background: yellow;
-}
-.slider--dark--small {
-  width: 30%;
-}
 </style>

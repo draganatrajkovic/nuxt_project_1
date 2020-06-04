@@ -1,7 +1,7 @@
 <template>
     <div class="box__wrap box__wrap--footer">
         <div class="box box--column">
-            <div class="box__section box__section--inline box__section--top-align">
+            <div class="box__section box__section--inline box__section--top-align footer__content">
                 <div class="img footer__logo-segment">
                     <img src="~/static/MainFooter/logo.png" alt="footer-logo"/>
                 </div>
@@ -82,32 +82,35 @@ export default {
 
 <style lang="scss" scoped>
     .box__wrap--footer {
-        padding-top: 80px;
+        padding-top: 97px;
         padding-bottom: 170px;
         background-color: #191723;
+    }
+    .footer__content {
+        justify-content: space-between;
     }
     .box__section--top-align {
         align-items: flex-start;
         border-bottom: 1px solid #3b374f;
         padding-bottom: 50px;
     }
-    // .box__section--footer {
-    //     width: 15%;
-    // }
+    .box__section--footer {
+        // padding: 0 30px;
+    }
     .footer__logo-segment {
-        width: 15%;
+        width: 8%;
     }
     .footer__info-segment {
-        width: 20%;
+        width: 16%;
     }
     .footer__links-segment {
-        width: 20%;
+        width: 16%;
     }
     .footer__service-segment {
-        width: 20%;
+        width: 16%;
     }
     .footer__subscribe-segment {
-        width: 30%;
+        width: 36%;
     }
     .box__section--footer input {
         background-color: #3b374f;
@@ -126,6 +129,8 @@ export default {
         line-height: 25px;
     }
     .text__footer--upper {
+        margin-top: 0;
+        padding-top: 0;
         text-transform: uppercase;
         font-weight: bold;
         color: #3b374f;
