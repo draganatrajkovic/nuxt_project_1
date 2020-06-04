@@ -8,8 +8,8 @@
             <h2 class="title text--center block-team__subtitle">{{worker.name}}</h2>
         </div>
         <div class="box__worker__position">
-            <p class="text text--center block-team__text">{{worker.positionTitle}}</p>
-            <p class="text text--center block-team__text">{{worker.positionDescription}}</p>
+            <p class="text text--center box__worker__text">{{worker.positionTitle}}</p>
+            <p class="text text--center box__worker__text">{{worker.positionDescription}}</p>
         </div>
     </div>
 </template>
@@ -41,7 +41,7 @@ export default {
     .box__worker__position {
         // margin-bottom: 115px;
     }
-    .block-team__text {
+    .box__worker__text {
         font-size: 18px;
         line-height: 14px;
     }

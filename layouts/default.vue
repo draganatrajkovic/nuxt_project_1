@@ -127,7 +127,7 @@ img {
 	color: white;
 	font-size: 14px;
 	text-transform: uppercase;
-	font-family: 'Lato';
+	font-family: 'Lato', sans-serif;
 	font-weight: bold;
 }
 .btn--referse {

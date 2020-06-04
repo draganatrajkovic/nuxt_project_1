@@ -1,12 +1,12 @@
 <template>
-    <div class="box__wrap box__wrap--padding box__wrap--about-asl">
+    <div class="box__wrap box__wrap--padding box__wrap--block-about-asl">
         <div class="box">
             <div class="box__section box__section--inline">
-                <div class="box__img--half img about-asl__img">
-                    <img src="~/static/BlockAboutAsl/bg.png" alt="about_asl_img"/>
+                <div class="box__img--half img block-about-asl__img">
+                    <img src="~/static/BlockAboutAsl/bg.png" alt="block-about-asl__img"/>
                 </div>
-                <div class="box__section  box__section--half about-asl__text__wrap">
-                    <div class="about-asl__text">
+                <div class="box__section  box__section--half block-about-asl__text__wrap">
+                    <div class="block-about-asl__text">
                         <h1 class="title">About ASL</h1>
                         <p class="text">
                             ASL manufactures innovative, sustainable lighting systems for healthcare, hospitality, 
@@ -22,21 +22,21 @@
 </template>
 
 <style lang="scss" scoped>
-    .box__wrap--about-asl {
+    .box__wrap--block-about-asl {
         padding-top: 90px;
         padding-bottom: 220px;
         justify-content: center;
     }
-    .about-asl__img {
+    .block-about-asl__img {
         justify-content: flex-end;
     }
-    .about-asl__img img {
+    .block-about-asl__img img {
         margin-right: -10px;
     }
-    .about-asl__text__wrap {
+    .block-about-asl__text__wrap {
         margin-top: 95px;
     }
-    .about-asl__text {
+    .block-about-asl__text {
         padding-left: 90px;
     }
 

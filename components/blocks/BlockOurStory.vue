@@ -1,9 +1,9 @@
 <template>
-    <div class="box__wrap box__wrap--padding box__wrap--our-story">
-        <div class="box box--our-story">
+    <div class="box__wrap box__wrap--padding box__wrap--block-our-story">
+        <div class="box box__block-our-story">
             <div class="box__section">
                 <h1 class="title title--white text--center">Our Story</h1>
-                <div class="img img--center our-story__img">
+                <div class="img img--center block-our-story__img">
                     <img src="~/static/BlockOurStory/bg.png" alt="our_story_img"/>
                 </div>
                 <VueSlickCarousel 
@@ -12,11 +12,11 @@
                     :autoplay="true" 
                     :autoplayHoverPause ="false"
                     ref="banner" 
-                    class="slider--white slider__our-story"
+                    class="slider--white block-our-story__slider"
                 >
-                    <div class="box__section slider__our-story__content">
-                        <h2 class="title title--white text--center slider__our-story__title">Doing the Bright Thing Since 1979</h2>
-                        <p class="text text--white text--center slider__our-story__text">
+                    <div class="box__section block-our-story__slider__content">
+                        <h2 class="title title--white text--center block-our-story__slider__title">Doing the Bright Thing Since 1979</h2>
+                        <p class="text text--white text--center block-our-story__slider__text">
                             It all began with a thermistor disk. The year was 1979 and, at 
                             out-of-the-way tradeshow, our president discovered a technology 
                             that would extend the life of an incandescent bulb, while simultaneously 
@@ -25,17 +25,17 @@
                             to life through commercial applications.
                         </p>
                     </div>
-                    <div class="box__section slider__our-story__content">
-                        <h2 class="title title--white text--center slider__our-story__title">What is Lorem Ipsum</h2>
-                        <p class="text text--white text--center slider__our-story__text">
+                    <div class="box__section block-our-story__slider__content">
+                        <h2 class="title title--white text--center block-our-story__slider__title">What is Lorem Ipsum</h2>
+                        <p class="text text--white text--center block-our-story__slider__text">
                             Lorem Ipsum is simply dummy text of the printing and typesetting 
                             industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, 
                             when an unknown printer took a galley of type and scrambled it to make a type specimen book.
                             </p>
                     </div>
-                    <div class="box__section slider__our-story__content">
-                        <h2 class="title title--white text--center slider__our-story__title">Why do we use it</h2>
-                        <p class="text text--white text--center slider__our-story__text">
+                    <div class="box__section block-our-story__slider__content">
+                        <h2 class="title title--white text--center block-our-story__slider__title">Why do we use it</h2>
+                        <p class="text text--white text--center block-our-story__slider__text">
                             It is a long established fact that a reader will be distracted by 
                             the readable content of a page when looking at its layout. The point of using Lorem 
                             Ipsum is that it has a more-or-less normal distribution of letters, as opposed to 
@@ -93,25 +93,25 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-    .box__wrap--our-story {
+    .box__wrap--block-our-story {
         background-color: $darkColor;
         padding-bottom: 160px;
         justify-content: center;
     }
-    .box--our-story {
+    .box__block-our-story {
         justify-content: center;
     }
-    .slider__our-story {
+    .block-our-story__slider {
         padding: 0 100px;
     }
-    .slider__our-story__title {
+    .block-our-story__slider__title {
         font-size: 24px;
         margin-bottom: 25px;
     }
-    .slider__our-story__text {
+    .block-our-story__slider__text {
         padding-top: 20px;
     }
-    .our-story__img {
+    .block-our-story__img {
         margin-top: -5px;
         margin-bottom: 10px;
     }

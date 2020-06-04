@@ -1,27 +1,27 @@
 <template>
-    <div class="box__wrap box__wrap--padding box__wrap--luminaries">
+    <div class="box__wrap box__wrap--padding box__wrap--block-luminaries">
         <div class="box box--column">
-            <div class="box__section luminaries__header">
-                <div class="box__section box__section--inline luminaries__title">
+            <div class="box__section block-luminaries__header">
+                <div class="box__section box__section--inline block-luminaries__title">
                     <h1 class="title">The Luminaries Next Door</h1>
                 </div>
-                <div class="luminaries__text">
+                <div class="block-luminaries__text">
                     <p class="text">Big minds. Deep hearts. Small attitudes.</p>
                 </div>
             </div>
 
-            <div class="box__section box__section--inline box__section--reverse luminaries__content">
-                <div class="box__section box__section--half luminaries__list">
+            <div class="box__section box__section--inline box__section--reverse block-luminaries__content">
+                <div class="box__section box__section--half block-luminaries__list">
                     <div v-for="(lum, index) in luminaries" :key="index" 
-                        :class="isSelected[index] ? 'luminaries__list-element--selected' : 'luminaries__list-element'"
+                        :class="isSelected[index] ? 'block-luminaries__list-element--selected' : 'block-luminaries__list-element'"
                     >
-                        <h3 class="title luminaries__list-element__title" @click="handleDropDown(lum.id)">{{lum.title}}</h3>
+                        <h3 class="title block-luminaries__list-element__title" @click="handleDropDown(lum.id)">{{lum.title}}</h3>
                     </div>
-                    <div class="luminaries__list__text">
+                    <div class="block-luminaries__list__text">
                         <p class="text">{{lum.content}}</p>
                     </div>
                 </div>
-                <div class="box__section box__section--half luminaries__slider">
+                <div class="box__section box__section--half block-luminaries__slider">
                     <VueSlickCarousel 
                         :arrows="false" 
                         :dots="true" 
@@ -74,36 +74,38 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-    .box__wrap--luminaries {
+    .box__wrap--block-luminaries {
         background-color: #eff2f4;
         padding-top: 135px;
         padding-bottom: 180px;
     }
-    .luminaries__header {
+    .block-luminaries__header {
         margin-bottom: 45px;
     }
-    .luminaries__title {
+    .block-luminaries__title {
         margin-bottom: -10px;
     }
-    .luminaries__list-element {
+    .block-luminaries__content {
+        align-items: flex-start;
+    }
+    .block-luminaries__list-element {
         border-bottom: 1px solid $neutralColor;
         padding-left: 90px;
     }
-    .luminaries__list-element--selected {
+    .block-luminaries__list-element--selected {
         background-color: $lightColor;
         margin-left: -30px;
         padding-left: 120px;
         z-index: 1;
-        .luminaries__list-element__title {
+        .block-luminaries__list-element__title {
             color: $darkColor;
-            margin: 20px 0;
         }
     }
-    .luminaries__list-element__title:hover {
+    .block-luminaries__list-element__title:hover {
         color: $darkColor;
         cursor: pointer;
     }
-    .luminaries__list-element__title {
+    .block-luminaries__list-element__title {
         font-size: 26px;
         color: $neutralColor;
         &:hover {
@@ -113,12 +115,12 @@ export default {
             transition: opacity .3s ease-in-out;
         }
     }
-    .luminaries__slider {
+    .block-luminaries__slider {
         opacity: 1;
         transition: opacity 1s ease-in-out;
         justify-content: flex-end;
     }
-    .luminaries__list__text {
+    .block-luminaries__list__text {
         margin-left: 90px;
     }
 </style>

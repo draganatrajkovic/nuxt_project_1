@@ -1,6 +1,8 @@
 <template>
-    <div>
-        Inspiration
+    <div class="container">
+        <div class="box__wrap">
+            Inspiration
+        </div>
     </div>
 </template>
 
