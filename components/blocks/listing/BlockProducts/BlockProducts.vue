@@ -3,7 +3,6 @@
         <div class="box box__block-products">
             <ul v-for="(product, index) in products" :key="index" class="box__section--block-products">
                 <SingleProduct :product="product" />
-                products
             </ul>
         </div>
     </div>
@@ -31,6 +30,8 @@ export default {
         // justify-content: flex-start;
     }
     .box__section--block-products {
-        width: 25%;
+        width: 32%;
+        padding: 0;
+        margin: 5px;
     }
 </style>
