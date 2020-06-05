@@ -1,6 +1,12 @@
 <template>
     <div class="box__product">
-         <img :src="require(`./../../../../static/listing/BlockProducts/${product.img}`)" />
+         <!-- <img :src="require(`./../../../../static/listing/BlockProducts/${product.img}`)" /> -->
+         {{product.title}}
+         {{product.ligthSource}}
+         {{product.productQuallity}}
+
+         {{product.diffuserType}}
+         {{product.material}}
     </div>
 </template>
 

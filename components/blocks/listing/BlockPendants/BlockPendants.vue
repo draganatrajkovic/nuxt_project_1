@@ -5,36 +5,66 @@
                 <h1 class="title">Mini Pendants</h1>
             </div>
 
-            <div class="box__section box__section--inline list block-pendants__list">
+            <div class="block-pendants__list">
                 <ul v-for="(pendant, index) in pendants" :key="index" 
-                    :class="[hiddenContent ? 'block-pendants__part block-pendants__part--selected' : 'block-pendants__part']"
+                    :class="[hiddenContent 
+                        ? 'block-pendants__part__wrap '
+                        : 'block-pendants__part__wrap block-pendants__part__wrap--selected' 
+                    ]"
                 >
-                    <div :class="[index < 4 
-                        ? 'block-pendants__part__visible--first-row box__section box__section--inline' 
-                        : 'block-pendants__part__visible box__section box__section--inline',]"
-                    >
-                        <div class="block-pendants__part__title">
-                            <h3>{{pendant.title}}</h3>
+
+
+                    <div class="block-pendants__part">
+
+                        <div 
+                            :class="[hiddenContent 
+                                ? 'block-pendants__part__top-border block-pendants__part__top-border--selected'
+                                : 'block-pendants__part__top-border' 
+                            ]">
                         </div>
-                        <div class="block-pendants__part__arrow">
-                            <img 
-                                src="~/static/Icons/icon_arrow-bottom_drop-down.png" 
-                                :class="[hiddenContent ? 'arrow-top arrow' : 'arrow-bottom arrow']"
-                                alt="arrow-down" 
-                                @click="handleDropDown"
-                            />
+
+
+                        <div class="block-pendants__part__content">
+                            <div :class="[hiddenContent
+                                ? 'block-pendants__part__hidden box__section box__section--inline' 
+                                : 'block-pendants__part__visible box__section box__section--inline'
+                                ]"
+                            >
+                                <div class="block-pendants__part__title">
+                                    <h3>{{pendant.title}}</h3>
+                                </div>
+                                <div class="block-pendants__part__arrow">
+                                    <img 
+                                        src="~/static/Icons/icon_arrow-bottom_drop-down.png" 
+                                        :class="[hiddenContent ? 'arrow-top arrow' : 'arrow-bottom arrow']"
+                                        alt="arrow-down" 
+                                        @click="handleDropDown"
+                                    />
+                                </div>
+                            </div>
                         </div>
+
                     </div>
+
+
                     <div v-if="hiddenContent">
                         <ul v-for="(preformance, index) in pendant.preformances" :key="index" class="block-pendants__part__hidden" >
-                            <input type="checkbox" /><span>{{preformance}}</span>
+                            <li>
+                                <input class="custom-checkbox" id="custom-checkbox-2" type="checkbox" checked>
+                                <label for="custom-checkbox-2">{{preformance}}</label>
+                            </li>
                         </ul>
                     </div>
                 </ul>
             </div>
             
-            <div>
-                tags
+            <div class="box__section box__section--inline block-pendants__tags">
+                <ul v-for="(tag, index) in tags" :key="index" class="block-pendants__tag">
+                    <li>
+                        <p class="text block-pendants__tag__text">{{tag.title}}:<span class="text--bold">{{tag.spec}}</span>
+                        <span class="text--bold" @click="handleCloseTag(tag.id)">X</span></p>
+                    </li>
+                </ul>
             </div>
         </div>
     </div>
@@ -46,13 +76,19 @@ export default {
     data() {
         return {
             pendants: pendantService.all(),
-            hiddenContent: false, 
-            test:''
+            hiddenContent: false,
+            tags: [
+                {id: 0, title:'Light source', spec:'Fluorescent'},
+                {id: 1, title:'Finish', spec:'Gold'}
+            ]
         }
     },
     methods: {
         handleDropDown() {
             this.hiddenContent = !this.hiddenContent
+        },
+        handleCloseTag(tagId) {
+            this.tags = this.tags.filter(tag => tag.id != tagId)
         }
     }
 }
@@ -60,26 +96,52 @@ export default {
 
 <style lang="scss" scoped>
     .block-pendants__list {
-        // width: 100%;
-        // display: flex;
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
         flex-wrap: wrap;
     }
-    .block-pendants__part {
+    .block-pendants__part__wrap {
         width: 20%;
-        margin: 0;
-        padding: 0 5px;
+        display: flex;
+        flex-direction: column;
+        margin: 10px;
+        padding: 0;
+        margin-bottom: 20px;
+        box-shadow: -8px 5px 10px lightgray, /*left and bottom*/
+            5px 8px 10px lightgray; /*right and bottom*/
+    }
+    .block-pendants__part__wrap--selected {
+        box-shadow: none;
+    }
+    .block-pendants__part {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+    }
+    .block-pendants__part__content {
+        padding: 10px;
+    }
+
+    //...............top border...............
+    .block-pendants__part__top-border {
+        width: 100%;
+        height: 4px;
+        border-top: 1px solid $darkColor;
+    }
+    .block-pendants__part__top-border--selected {
+        border-top: 4px solid transparent;
+        border-image: linear-gradient(to right, #ffd86a, #fff8e4, #b4e2ff);
+        border-image-slice: 1;
     }
     .block-pendants__part__visible {
-        border-bottom: 1px solid $darkColor;
         align-items: center;
     }
-    .block-pendants__part__visible--first-row {
-        align-items: center;
-        border-top: 1px solid $darkColor;
+    .block-pendants__part__visible--last-row {
         border-bottom: 1px solid $darkColor;
     }
     .block-pendants__part__hidden {
-
+        // align-items: center;
     }
     .arrow-top {
         transform: rotate(180deg);
@@ -88,8 +150,79 @@ export default {
         cursor: pointer;
         opacity: 0.7;
     }
-    .block-pendants__part--selected {
-        border: 1px solid $darkColor;
-    }
-    
+
+
+  //...............checkbox...............
+ul {
+    padding: 10px 20px;
+} 
+li {
+    list-style: none;
+    margin: 0;
+}
+// .custom-checkbox {
+//     position: absolute;
+//     opacity: 0;
+//     & + label {
+//         position: relative;
+//         cursor: pointer;
+//         padding: 0;
+//     }
+//     // Box.
+//     & + label:before {
+//         content: '';
+//         margin-right: 10px;
+//         display: inline-block;
+//         vertical-align: text-top;
+//         width: 20px;
+//         height: 20px;
+//         background: white;
+//     }
+//     // Box hover
+//         &:hover + label:before {
+//         background: $mainColor;
+//     }
+//     // Box focus
+//         &:focus + label:before {
+//         box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.12);
+//     }
+//     // Box checked
+//         &:checked + label:before {
+//         background: $mainColor;
+//     }
+//     // Checkmark. Could be replaced with an image
+//     &:checked + label:after {
+//         content: '';
+//         position: absolute;
+//         left: 5px;
+//         top: 9px;
+//         background: white;
+//         width: 2px;
+//         height: 2px;
+//         box-shadow: 
+//         2px 0 0 white,
+//         4px 0 0 white,
+//         4px -2px 0 white,
+//         4px -4px 0 white,
+//         4px -6px 0 white,
+//         4px -8px 0 white;
+//         transform: rotate(45deg);
+//     }
+// }
+
+//...............tags...............
+.block-pendants__tags {
+    justify-content: flex-start;
+}
+.block-pendants__tag {
+    background-color: #f1f4f6;
+    margin: 10px;
+    padding: 15px;
+    border-radius: 50px;
+}
+.block-pendants__tag__text {
+    font-size: 18px;
+    margin: 0;
+}
+
 </style>

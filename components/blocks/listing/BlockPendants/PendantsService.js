@@ -21,8 +21,8 @@ const pendants = [
     },
     {
         id: 5, 
-        title: 'Light Color', 
-        preformances: ['Red', 'Blue', 'Yellow', 'Green'],
+        title: 'Material', 
+        preformances: ['Stainless Steel', 'Glass', 'Metal'],
     },
     {
         id: 6, 
@@ -37,7 +37,7 @@ const pendants = [
     {
         id: 8, 
         title: 'Product Quallity', 
-        preformances: ['Premium', 'Medium', 'Low'],
+        preformances: ['Bronze', 'Silver', 'Gold'],
     }
 ]
 
