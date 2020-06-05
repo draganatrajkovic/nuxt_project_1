@@ -20,25 +20,25 @@
                 <div v-if="!searchBar" class="nav-links box__section box__section--inline">
                     <div class="nav-link__content">
                         <div class="nav-link__link">
-                            <nuxt-link to="/inspiration" >Inspiration </nuxt-link>
+                            <nuxt-link to="/inspiration" class="nav-link__link__a">Inspiration </nuxt-link>
                         </div>
                         <div class="nav-link__border"></div>
                     </div>
                     <div class="nav-link__content">
                         <div class="nav-link__link">
-                            <nuxt-link to="/customization" >Customization </nuxt-link>
+                            <nuxt-link to="/customization" class="nav-link__link__a">Customization </nuxt-link>
                         </div>
                         <div class="nav-link__border"></div>
                     </div>
                     <div class="nav-link__content">
                         <div class="nav-link__link">
-                            <nuxt-link to="/company" >Company</nuxt-link>
+                            <nuxt-link to="/company" class="nav-link__link__a">Company</nuxt-link>
                         </div>
                         <div class="nav-link__border"></div>
                     </div>
                     <div class="nav-link__content">
                         <div class="nav-link__link">
-                            <nuxt-link to="/contact" >Contact</nuxt-link>
+                            <nuxt-link to="/contact" class="nav-link__link__a">Contact</nuxt-link>
                         </div>
                         <div class="nav-link__border"></div>
                     </div>
@@ -80,7 +80,7 @@ export default {
             this.searchTerm = ''
         }, 
         handleProductFinder() {
-            console.log('handleProductFinder')
+            this.$router.push('/listing');
         }
     }
 }
