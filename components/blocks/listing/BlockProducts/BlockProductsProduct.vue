@@ -6,7 +6,7 @@
             :style="{'background-image': 'url(' + require(`./../../../../static/listing/BlockProducts/${product.img}`) + ')'}"
         >
             <div class="top-content__wrap box__section box__section--inline">
-                <div class="top-content box__section ">
+                <div class="top-content  ">
                     <div class="top-content__title__wrap">
                         <h1 class="top-content__title">{{product.title}}</h1>
                     </div>
@@ -15,7 +15,7 @@
                     </div>
                 </div>
                 <div class="top-content__source box__section">
-                    <p class="text">{{product.ligthSource}}</p>
+                    <p class="text text--right text__source">{{product.ligthSource}}</p>
                 </div>
             </div>
 
@@ -102,6 +102,7 @@ export default {
 <style lang="scss" scoped>
     .product__wrap {
         width: 100%;
+        margin-bottom: 15px;
     }
     .product {
         padding: 35px;
@@ -138,11 +139,15 @@ export default {
         font-size: 14px;
         background-color: #d78772;
         border-radius: 5px;
+        text-align: center;
     }
 
     .top-content__source {
         flex-direction: row;
-        align-items: flex-start;
+        justify-content: flex-end;
+        text-align: right;
+        padding: 0;
+        margin: 0;
     }
     .top-content__title {
         font-size: 30px;
@@ -156,9 +161,13 @@ export default {
         margin-top: 90px;
         width: 100%;
     }
-    .bottom-content__diffuser, .bottom-content__material {
+    .bottom-content__diffuser {
         justify-content: flex-start;
         align-items: center;
+    }
+    .bottom-content__material {
+       align-items: center; 
+       justify-content: flex-end;
     }
 
     .product__buttons {

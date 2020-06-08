@@ -26,10 +26,12 @@ export default {
 
 <style lang="scss" scoped>
     .box__wrap--block-products {
-        padding-top: 28px;
+        padding-top: 38px;
+        padding-bottom: 50px;
     }
     .box__block-products {
         flex-wrap: wrap;
+        justify-content: space-between;
     }
     .box__section--block-products {
         width: 32%;

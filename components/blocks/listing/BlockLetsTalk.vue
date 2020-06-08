@@ -11,7 +11,7 @@
                 </div>
             </div>
             <div class="block-lets-talk__img">
-                <img src='~/static/BlockExperienceDesign/bg-img.png'/>
+                <img src='~/static/listing/BlockProducts/lets-talk_bg.png'/>
             </div>
         </div>
     </div>
@@ -30,19 +30,21 @@ export default {
 <style lang="scss" scoped>
     .box__wrap--block-lets-talk {
         background-color: $mainColor;
-        padding-bottom: 12px;
+        padding-bottom: 80px;
     }
     .block-lets-talk__content {
-        width: 50%;
+        width: 60%;
         justify-content: flex-start;
-        padding-top: 130px;
+        padding-top: 180px;
     }
     .block-lets-talk__text {
         margin-top: 10px;
     }
     .block-lets-talk__btn {
-        margin-top: 38px;
+        // justify-content: flex-start;
+        margin-top: 110px;
         width: 117px;
+        padding: 0;
     }
     .block-lets-talk__img {
         width: 50%;

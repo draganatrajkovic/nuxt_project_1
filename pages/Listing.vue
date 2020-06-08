@@ -15,7 +15,7 @@ import BlockSubnav from '~/components/blocks/listing/BlockSubnav.vue'
 import BlockPendants from '~/components/blocks/listing/BlockPendants/BlockPendants.vue'
 import PartPagination from '~/components/parts/PartPagination.vue'
 import BlockProducts from '~/components/blocks/listing/BlockProducts/BlockProducts.vue'
-import BlockRecentlyViewed from '~/components/blocks/listing/BlockRecentlyViewed.vue'
+import BlockRecentlyViewed from '~/components/blocks/listing/BlockProducts/BlockRecentlyViewed.vue'
 import BlockLetsTalk from '~/components/blocks/listing/BlockLetsTalk.vue'
 
 export default {

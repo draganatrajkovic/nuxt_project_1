@@ -220,7 +220,7 @@ li {
 
 //...............tags...............
 .block-pendants__tags {
-    padding-top: 110px;
+    padding-top: 100px;
     justify-content: flex-start;
 }
 .block-pendants__tag {
