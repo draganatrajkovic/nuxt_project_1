@@ -20,7 +20,6 @@ export default {
             products: productsService.all()
         }
     }
-    
 }
 </script>
 

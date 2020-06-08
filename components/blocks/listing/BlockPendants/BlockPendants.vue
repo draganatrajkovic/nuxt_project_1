@@ -46,8 +46,11 @@
                     <div v-if="hiddenContent">
                         <ul v-for="(preformance, index) in pendant.preformances" :key="index" class="block-pendants__part__hidden" >
                             <li>
-                                <input class="custom-checkbox" id="custom-checkbox-2" type="checkbox" checked>
-                                <label for="custom-checkbox-2">{{preformance}}</label>
+                                <label>
+                                    <input type='checkbox'>
+                                    <span></span>
+                                    {{preformance}}
+                                </label>
                             </li>
                         </ul>
                     </div>
@@ -168,56 +171,35 @@ li {
     list-style: none;
     margin: 0;
 }
-// .custom-checkbox {
-//     position: absolute;
-//     opacity: 0;
-//     & + label {
-//         position: relative;
-//         cursor: pointer;
-//         padding: 0;
-//     }
-//     // Box.
-//     & + label:before {
-//         content: '';
-//         margin-right: 10px;
-//         display: inline-block;
-//         vertical-align: text-top;
-//         width: 20px;
-//         height: 20px;
-//         background: white;
-//     }
-//     // Box hover
-//         &:hover + label:before {
-//         background: $mainColor;
-//     }
-//     // Box focus
-//         &:focus + label:before {
-//         box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.12);
-//     }
-//     // Box checked
-//         &:checked + label:before {
-//         background: $mainColor;
-//     }
-//     // Checkmark. Could be replaced with an image
-//     &:checked + label:after {
-//         content: '';
-//         position: absolute;
-//         left: 5px;
-//         top: 9px;
-//         background: white;
-//         width: 2px;
-//         height: 2px;
-//         box-shadow: 
-//         2px 0 0 white,
-//         4px 0 0 white,
-//         4px -2px 0 white,
-//         4px -4px 0 white,
-//         4px -6px 0 white,
-//         4px -8px 0 white;
-//         transform: rotate(45deg);
-//     }
-// }
+label input {
+    display: none; /* Hide the default checkbox */
+}
 
+/*new checkbox style */
+label span {
+    height: 20px;
+    width: 20px;
+    border: none;
+    display: inline-block;
+    position: relative;
+    background-color: #e6e8ea;
+    border-radius: 3px;
+}
+
+/* Style its checked state...with a ticked icon */
+[type=checkbox]:checked + span:before {
+    content: url("./../../../../static/Icons/checked--white.png");
+    position: absolute;
+    top: 0px;
+    left: 4px;
+    height: 20px;
+    width: 20px;
+    border-radius: 3px;
+}
+
+[type=checkbox]:checked + span {
+    background-color: $darkColor;
+}
 //...............tags...............
 .block-pendants__tags {
     padding-top: 100px;
