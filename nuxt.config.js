@@ -46,9 +46,13 @@ export default {
   ** Nuxt.js modules
   */
   modules: [
-    // 'bootstrap-vue/nuxt',
-    '@nuxtjs/style-resources'
+    '@nuxtjs/style-resources',
+    '@nuxtjs/axios' //global axios
   ],
+  //global axios
+  axios: {
+    BaseURL: 'https://api.jsonbin.io/b/'
+  },
   styleResources: {
     scss: ['./assets/scss/*.scss']
   },

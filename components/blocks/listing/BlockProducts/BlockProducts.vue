@@ -9,16 +9,25 @@
 </template>
 
 <script>
-import { productsService } from './ProductsService'
+// import { productsService } from './ProductsService'
 import SingleProduct from './BlockProductsProduct'
+import {  mapGetters } from 'vuex'
 export default {
     components: {
         SingleProduct
     },
     data() {
         return {
-            products: productsService.all()
+            // products: productsService.all()
         }
+    },
+    computed: {
+    // products() {
+    //     return this.$store.getters.['getProductsList']
+    // }
+        ...mapGetters({
+            products: 'getProductsList'
+        })
     }
 }
 </script>
