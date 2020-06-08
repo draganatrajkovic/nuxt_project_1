@@ -1,57 +1,75 @@
 <template>
-    <div class="box__product__wrap box__section box__section--inline">
+    <div class="product__wrap box__section box__section--inline">
 
-        <div class="box__product box__section" :style="{'background-image': 'url(' + require(`./../../../../static/listing/BlockProducts/${product.img}`) + ')'}">
-
-            <div class="box__product__top box__section box__section--inline">
-                <div class="box__product__top__title box__section box__section--half">
-                    <div>
-                        {{product.title}}
+        <div 
+            class="product box__section" 
+            :style="{'background-image': 'url(' + require(`./../../../../static/listing/BlockProducts/${product.img}`) + ')'}"
+        >
+            <div class="top-content__wrap box__section box__section--inline">
+                <div class="top-content box__section ">
+                    <div class="top-content__title__wrap">
+                        <h1 class="top-content__title">{{product.title}}</h1>
                     </div>
-                    <div>
-                        <p class="text text--white text__product0quality">{{product.productQuallity}}</p>
+                    <div class="top-content__quality__wrap">
+                        <p class="text text--white top-content__quality">{{product.productQuallity}}</p>
                     </div>
                 </div>
-                <div class="box__product__top__light-source box__section box__section--half">
-                    {{product.ligthSource}}
+                <div class="top-content__source box__section">
+                    <p class="text">{{product.ligthSource}}</p>
                 </div>
             </div>
 
-            <div class="box__product__buttons box__section">
-                <div class="box__product__button"> 
-                    <div v-if="expandedButtonSpec" @click="handleexpandedButtonSpec" class="box__product__button__ring box__product__button__ring--expanded">
+            <div class="product__buttons box__section">
+                <div class="product__button"> <!--specs button-->
+                    <div 
+                        v-if="expandedButtonSpec" 
+                        @click="handleexpandedButtonSpec" 
+                        class="product__button__ring product__button__ring--expanded"
+                    >
                         <span>View Specs</span>
-                        <img src="~/static/listing/BlockProducts/icon_specs--papers.png" />
+                        <img src="~/static/listing/BlockProducts/icon_specs--papers.png" class="product__button__icon" />
                     </div>
-                    <div v-if="!expandedButtonSpec" class="box__product__button__ring" @click="handleexpandedButtonSpec">
-                        <img src="~/static/listing/BlockProducts/icon_specs--papers.png" />
+                    <div 
+                        v-if="!expandedButtonSpec" 
+                        class="product__button__ring" 
+                        @click="handleexpandedButtonSpec"
+                    >
+                        <img src="~/static/listing/BlockProducts/icon_specs--papers.png" class="product__button__icon" />
                     </div>
                 </div>
 
-                <div class="box__product__button"> <!--add button-->
-                    <div v-if="expandedButtonAdd" @click="handleExpandedButtonAdd" class="box__product__button__ring box__product__button__ring--expanded">
+                <div class="product__button"> <!--add button-->
+                    <div 
+                        v-if="expandedButtonAdd" 
+                        @click="handleExpandedButtonAdd" 
+                        class="product__button__ring product__button__ring--expanded"
+                    >
                         <span>Added</span>
-                        <img src="~/static/listing/BlockProducts/icon_add--folder.png" />
+                        <img src="~/static/listing/BlockProducts/icon_add--folder.png" class="product__button__icon" />
                     </div>
-                    <div v-if="!expandedButtonAdd" class="box__product__button__ring" @click="handleExpandedButtonAdd">
-                        <img src="~/static/listing/BlockProducts/icon_add--folder.png" />
+                    <div 
+                        v-if="!expandedButtonAdd" 
+                        class="product__button__ring" 
+                        @click="handleExpandedButtonAdd"
+                    >
+                        <img src="~/static/listing/BlockProducts/icon_add--folder.png" class="product__button__icon" />
                     </div>
                 </div>
 
             </div>
 
-            <div class="box__product__bottom box__section box__section--inline">
-                <div class="box__product__bottom__diffuser-type box__section box__section--inline box__section--half">
-                    <div class="box__product__bottom__icon">
+            <div class="bottom-content box__section box__section--inline">
+                <div class="bottom-content__diffuser box__section box__section--inline box__section--half">
+                    <div class="bottom-content__icon">
                         <img src="~/static/listing/BlockProducts/icon_diffuser.png" />
                     </div>
-                    {{product.diffuserType}}
+                    <p class="text">{{product.diffuserType}}</p>
                 </div>
-                <div class="box__product__bottom__material box__section box__section--inline box__section--half">
-                    <div class="box__product__bottom__icon">
+                <div class="bottom-content__material box__section box__section--inline box__section--half">
+                    <div class="bottom-content__icon">
                         <img src="~/static/listing/BlockProducts/icon_material.png" />
                     </div>
-                    {{product.material}}
+                    <p class="text">{{product.material}}</p>
                 </div>
             </div>
 
@@ -82,11 +100,11 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-    .box__product__wrap {
+    .product__wrap {
         width: 100%;
     }
-    .box__product {
-        padding: 100px 50px;
+    .product {
+        padding: 35px;
         background-color: #eff2f4;
         background-repeat:no-repeat;
         background-position: center;
@@ -96,45 +114,65 @@ export default {
             background-color: #272339;
             color: white;
             cursor: pointer;
-            .box__product__bottom__icon img {
+            .bottom-content__icon img {
                 filter:invert(100%);
+            }
+            .top-content__title {
+                color: white;
+            }
+            .product__buttons {
+                opacity: 1;
+            }
+            .text {
+                color: white;
             }
         }
     }
-
-    .text__product0quality {
+    .top-content__wrap {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+    }
+    .top-content__quality {
         font-size: 14px;
         background-color: #d78772;
         border-radius: 5px;
     }
 
-    .box__product__top__light-source {
+    .top-content__source {
         flex-direction: row;
+        align-items: flex-start;
     }
-    // .box__product__top {
-    //     width: 100%;
-    //     display: flex;
-    //     justify-content: space-between;
-    //     align-items: flex-start;
-    // }
-    // .box__product__top__title {
-    //     width: 50%;
-    //     display: flex;
-    // }
-
-    .box__product__bottom__diffuser-type {
-        justify-content: flex-start
+    .top-content__title {
+        font-size: 30px;
+        font-family: 'Geogrotesque';  
+        margin: 0;
+        font-weight: bold;
+        color: $mainColor;
     }
 
-    .box__product__bottom__material {
+    .bottom-content {
+        margin-top: 90px;
+        width: 100%;
+    }
+    .bottom-content__diffuser, .bottom-content__material {
         justify-content: flex-start;
+        align-items: center;
     }
-    .box__product__button {
+
+    .product__buttons {
+        opacity: 0;
+    }
+    .product__button {
         display: flex;
         justify-content: flex-end;
         margin-bottom: 10px;
     }
-    .box__product__button__ring {
+    .product__button__icon {
+        margin: 10px;
+    }
+    .product__button__ring {
         // border: 4px solid transparent;
         // border-image: linear-gradient(to right, #ffd86a, #fff8e4, #b4e2ff);
         // border-image-slice: 1;
@@ -156,12 +194,16 @@ export default {
             box-shadow:0 0 15px white;
         }
     }
-    .box__product__button__ring--expanded {
+    .product__button__ring--expanded {
         width: 150px;
     }
-
-
-    .box__product__bottom__icon {
-        margin-right: 10px;
+    .bottom-content__icon {
+        margin: 0 5px;
+    }
+    .text {
+        font-size: 14px;
+        letter-spacing: 0;
+        padding: 0;
+        margin: 0;
     }
 </style>

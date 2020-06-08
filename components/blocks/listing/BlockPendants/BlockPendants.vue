@@ -13,16 +13,13 @@
                     ]"
                 >
 
-
-                    <div class="block-pendants__part">
-
+                    <li class="block-pendants__part">
                         <div 
                             :class="[hiddenContent 
                                 ? 'block-pendants__part__top-border block-pendants__part__top-border--selected'
                                 : 'block-pendants__part__top-border' 
                             ]">
                         </div>
-
 
                         <div class="block-pendants__part__content">
                             <div :class="[hiddenContent
@@ -31,7 +28,7 @@
                                 ]"
                             >
                                 <div class="block-pendants__part__title">
-                                    <h3>{{pendant.title}}</h3>
+                                    <p class="text text--bold block-pendants__part__title__text">{{pendant.title}}</p>
                                 </div>
                                 <div class="block-pendants__part__arrow">
                                     <img 
@@ -44,8 +41,7 @@
                             </div>
                         </div>
 
-                    </div>
-
+                    </li>
 
                     <div v-if="hiddenContent">
                         <ul v-for="(preformance, index) in pendant.preformances" :key="index" class="block-pendants__part__hidden" >
@@ -62,7 +58,7 @@
                 <ul v-for="(tag, index) in tags" :key="index" class="block-pendants__tag">
                     <li>
                         <p class="text block-pendants__tag__text">{{tag.title}}:<span class="text--bold">{{tag.spec}}</span>
-                        <span class="text--bold" @click="handleCloseTag(tag.id)">X</span></p>
+                        <span class="text--bold tag__close-button" @click="handleCloseTag(tag.id)">x</span></p>
                     </li>
                 </ul>
             </div>
@@ -76,6 +72,7 @@ export default {
     data() {
         return {
             pendants: pendantService.all(),
+            // totalPendants: pendantService.totalPendants(),
             hiddenContent: false,
             tags: [
                 {id: 0, title:'Light source', spec:'Fluorescent'},
@@ -94,20 +91,24 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss" scoped>  
+    .box__wrap--block-pendants {
+        margin-bottom: 20px;
+    }
     .block-pendants__list {
         width: 100%;
         display: flex;
         justify-content: space-between;
         flex-wrap: wrap;
+        padding-top: 30px;
     }
     .block-pendants__part__wrap {
-        width: 20%;
+        width: 23%;
         display: flex;
         flex-direction: column;
-        margin: 10px;
+        margin: 0 10px;
         padding: 0;
-        margin-bottom: 20px;
+        margin-bottom: 12px;
         box-shadow: -8px 5px 10px lightgray, /*left and bottom*/
             5px 8px 10px lightgray; /*right and bottom*/
     }
@@ -122,7 +123,17 @@ export default {
     .block-pendants__part__content {
         padding: 10px;
     }
-
+    .block-pendants__part__title__text {
+        font-size: 18px;
+        padding: 0;
+        margin: 0;
+        letter-spacing: 0;
+    }
+    .block-pendants__part__wrap:nth-last-child(-n + 4) { //hardcoded
+        padding-bottom: 10px;
+        border-bottom: 1px solid $darkColor;
+    }
+    
     //...............top border...............
     .block-pendants__part__top-border {
         width: 100%;
@@ -138,10 +149,7 @@ export default {
         align-items: center;
     }
     .block-pendants__part__visible--last-row {
-        border-bottom: 1px solid $darkColor;
-    }
-    .block-pendants__part__hidden {
-        // align-items: center;
+        // border-bottom: 1px solid $darkColor;
     }
     .arrow-top {
         transform: rotate(180deg);
@@ -150,7 +158,7 @@ export default {
         cursor: pointer;
         opacity: 0.7;
     }
-
+    
 
   //...............checkbox...............
 ul {
@@ -212,17 +220,28 @@ li {
 
 //...............tags...............
 .block-pendants__tags {
+    padding-top: 110px;
     justify-content: flex-start;
 }
 .block-pendants__tag {
     background-color: #f1f4f6;
     margin: 10px;
-    padding: 15px;
+    padding: 5px 10px;
     border-radius: 50px;
+    border: none;
 }
 .block-pendants__tag__text {
     font-size: 18px;
+    letter-spacing: 1px;
     margin: 0;
 }
+.tag__close-button {
+    margin-left: 10px;
+    &:hover {
+        cursor: pointer;
+        transform: scale(1.2);
+    }
+}
+
 
 </style>

@@ -48,6 +48,9 @@ export default class PendantService {
     find(id) {
         return pendants.find(pendant => pendant.id == id)
     }
+    // totalPendants() {
+    //     return pendants.length()
+    // }
 }
 
 export const pendantService = new PendantService()

@@ -25,9 +25,11 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+    .box__wrap--block-products {
+        padding-top: 28px;
+    }
     .box__block-products {
         flex-wrap: wrap;
-        // justify-content: flex-start;
     }
     .box__section--block-products {
         width: 32%;

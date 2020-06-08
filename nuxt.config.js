@@ -18,7 +18,10 @@ export default {
       { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap'},
       
       // font-family: "Circular Std Medium"
-      { rel: 'stylesheet', href: '//db.onlinewebfonts.com/c/9475d6a0b79c164f9f605673714e75d9?family=Circular+Std+Medium'}
+      { rel: 'stylesheet', href: '//db.onlinewebfonts.com/c/9475d6a0b79c164f9f605673714e75d9?family=Circular+Std+Medium'},
+
+      //font-family: "Geogrotesque";
+      // { rel: 'stylesheet', href="//db.onlinewebfonts.com/c/6966cc177fccc04acf8c9e8b04a81fe7?family=Geogrotesque"},
     ]
   },
   /*
@@ -58,5 +61,9 @@ export default {
     */
     extend (config, ctx) {
     }
+  },
+  router: {
+    linkActiveClass: 'custom-active-link',
+    linkExactActiveClass: 'custom-exact-active-link',
   }
 }
