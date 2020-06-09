@@ -3,7 +3,7 @@
 
         <div 
             class="product box__section" 
-            :style="{'background-image': 'url(' + require(`./../../../../static/listing/BlockProducts/${product.img}`) + ')'}"
+            :style="{'background-image': 'url(' + /*require(`./../../../../static/listing/BlockProducts/${product.img}`)*/ + ')'}"
         >
             <div class="top-content__wrap box__section box__section--inline">
                 <div class="top-content  ">

@@ -16,15 +16,20 @@ export default {
     components: {
         SingleProduct
     },
+    beforeMount() {
+        this.$store.dispatch('dispatchSetProducts');
+    },
     data() {
         return {
             // products: productsService.all()
         }
     },
+    watch: {
+        getProductsList() {
+            console.log(this.getProductsList)
+        }
+    },
     computed: {
-    // products() {
-    //     return this.$store.getters.['getProductsList']
-    // }
         ...mapGetters({
             products: 'getProductsList'
         })

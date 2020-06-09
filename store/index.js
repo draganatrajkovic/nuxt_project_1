@@ -21,38 +21,11 @@ export const mutations = {
 }
 
 export const actions = {
-    async nuxtServerInit({ commit, dispatch }) {
-        await dispatch('dispatchSetProducts')
-    },
-    
     async dispatchSetProducts({ commit }) {
-        const products = await axios.get(`https://api.jsonbin.io/b/5ede0a461f9e4e5788198e29`)
-
-        const json = JSON.stringify(products)
-
-        // for global axios acces: this.$axios.get('...')
-        // let {products} = await this.$axios.get('5ede0a461f9e4e5788198e29')
-
-        // const products = [{
-        //     id:1, 
-        //     title: 'RFBA', 
-        //     ligthSource: '12.4"Hx31"Lx5"D',
-        //     productQuallity: 'Bronze',
-        //     img: 'product_01.png',
-        //     diffuserType: 'Acrylic',
-        //     material: 'Stainless Steel'
-        // },
-        // {
-        //     id:2, 
-        //     title: 'RFBA', 
-        //     ligthSource: '12.4"Hx31"Lx5"D',
-        //     productQuallity: 'Bronze',
-        //     img: 'product_02.png',
-        //     diffuserType: 'Acrylic',
-        //     material: 'Stainless Steel'
-        // }]
-
-        commit( 'setProducts', json)
-    },
+        const products = await axios.get(`https://api.jsonbin.io/b/5ede0a461f9e4e5788198e29`).then((res) => {
+            commit('setProducts', res.data);
+        });
+       
+    }
 }
 
