@@ -1,6 +1,6 @@
 <template>
     <div class="box__wrap box__wrap--block-products">
-        <div class="box--column">
+        <div class="box box--column">
             <PartPagination :productsList="productsList" @handleActivePage="setActivePage" />
             <div class="box box__block-products">
                 <ul v-for="(product, index) in visibleProducts" :key="index" class="box__section--block-products">
@@ -15,7 +15,6 @@
 import PartPagination from '~/components/parts/PartPagination.vue';
 import SingleProduct from './BlockProductsProduct.vue';
 import {  mapGetters } from 'vuex';
-
 export default {
     components: {
         SingleProduct,
@@ -41,28 +40,30 @@ export default {
         }), 
         visibleProducts() {
             let arr = []
-            arr = this.productsList.filter(product => product.ID <= ((this.activePage *10)) && 
-                    product.ID > ((this.activePage *10) -10))
-            console.log(this.activePage + ' test')
-            console.log(arr)
+            let bottomLimit=(this.activePage *10) -10
+            let topLimit = this.activePage *10
+            let i
+
+            arr = this.productsList.filter(product => this.productsList.indexOf(product)<= this.activePage *10 && 
+                this.productsList.indexOf(product)>this.activePage *10 -10)
+                
+            console.log(bottomLimit, topLimit)
             return arr
         }
     },
     methods: {
         setActivePage(activePage) {
             this.activePage = activePage
+            // console.log('All products ' + this.activePage)
         }
     }
 }
 </script>
 
 <style lang="scss" scoped>
-    .box__wrap--block-products {
-        width: 100%;
-    }
     .box__block-products {
         width: 100%;
-        padding-top: 38px;
+        // padding-top: 38px;
         padding-bottom: 50px;
         flex-wrap: wrap;
         justify-content: space-between;

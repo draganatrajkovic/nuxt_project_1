@@ -1,21 +1,21 @@
 <template>
-    <!-- <div class="box__wrap"> -->
+    <div class="box__wrap">
         <div class="box box--column box--pagination">
-            <div class="">
-                <div class="arrow left__arrow" @click="handlePrev"></div>
-                <div class="arrow right__arrow" @click="handleNext"></div>
-            </div>
             <div class="pagination__numbers">
                 <ul v-for="(num, index) in totalPages" :key="index" class="pagination__number">
-                    <!-- <li class="pagination__number__li"> -->
+                    <li class="pagination__number__li">
                         <p 
                             :class="[activePage !== num ? 'text' : 'text--bold']"
                             @click="handlePageNumber(index)">{{num}}</p>
-                    <!-- </li> -->
+                    </li>
                 </ul>
             </div>
+            <div class="box arrows">
+                <div class="arrow left__arrow" @click="handlePrev"></div>
+                <div class="arrow right__arrow" @click="handleNext"></div>
+            </div>
         </div>
-    <!-- </div> -->
+    </div>
 </template>
 
 <script>
@@ -30,24 +30,26 @@ export default {
     },
     methods: {
         handlePrev(activePage) {
-            this.$emit( 'handleActivePage', this.activePage)
             if ( this.activePage <= 1) {
                 this.activePage
+                this.$emit( 'handleActivePage', this.activePage)
             } else {
-                this.activePage -= 1
+                this.activePage = this.activePage - 1
+                this.$emit( 'handleActivePage', this.activePage)
             }
         },
         handleNext() {
-            this.$emit( 'handleActivePage', this.activePage)
             if (this.activePage >= this.totalPages.length) {
+                this.$emit( 'handleActivePage', this.activePage)
                 this.activePage
             } else {
-                this.activePage += 1
+                this.activePage = this.activePage + 1
+                this.$emit( 'handleActivePage', this.activePage)
             }
         },
         handlePageNumber(index) {
-            this.$emit( 'handleActivePage', this.activePage)
             this.activePage = index + 1
+            this.$emit( 'handleActivePage', this.activePage)
         }
     },
     computed: {
@@ -72,9 +74,13 @@ export default {
         justify-content: center;
         align-items: center;
     }
+    .arrows {
+        justify-content: center;
+    }
     .arrow {
         width: 71px;
         height: 71px;
+        
         &:hover {
             cursor: pointer;
         }
@@ -100,7 +106,6 @@ export default {
     .pagination__number {
         padding: 0;
         margin: 0 5px;
-
     }
     .pagination__number__li {
         list-style-type: none;

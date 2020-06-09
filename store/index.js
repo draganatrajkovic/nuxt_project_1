@@ -24,10 +24,9 @@ export const actions = {
     // nuxtServerInit() {
     //     console.log('pas');
     // },
-
     async dispatchSetProducts({ commit }) {
         const products = await axios.get(`https://api.jsonbin.io/b/5ede0a461f9e4e5788198e29`).then((res) => {  
-        console.log(res.data)    
+        // console.log(res.data)    
         commit('setProducts', res.data);
         });
     }
