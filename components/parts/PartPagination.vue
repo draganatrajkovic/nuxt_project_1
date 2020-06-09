@@ -1,33 +1,65 @@
 <template>
-    <div class="box__wrap">
-        <div class="box--pagination">
-            <div class="arrow left__arrow" @click="handlePrev"></div>
-            <div class="pagination__numbers box box--inline">
-                <ul v-for="(num, index) in pages" :key="index" class="pagination__number">
-                    <li class="pagination__number__li">
-                        <p class="text">{{num}}</p>
-                    </li>
+    <!-- <div class="box__wrap"> -->
+        <div class="box box--column box--pagination">
+            <div class="">
+                <div class="arrow left__arrow" @click="handlePrev"></div>
+                <div class="arrow right__arrow" @click="handleNext"></div>
+            </div>
+            <div class="pagination__numbers">
+                <ul v-for="(num, index) in totalPages" :key="index" class="pagination__number">
+                    <!-- <li class="pagination__number__li"> -->
+                        <p 
+                            :class="[activePage !== num ? 'text' : 'text--bold']"
+                            @click="handlePageNumber(index)">{{num}}</p>
+                    <!-- </li> -->
                 </ul>
             </div>
-            <div class="arrow right__arrow" @click="handleNext"></div>
-
         </div>
-    </div>
+    <!-- </div> -->
 </template>
 
 <script>
 export default {
-    data() {
+    props: [
+        'productsList'
+    ],
+    data(){
         return {
-            pages: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+            activePage: 1
         }
     },
     methods: {
-        handlePrev() {
-            console.log('handlePrev')
+        handlePrev(activePage) {
+            this.$emit( 'handleActivePage', this.activePage)
+            if ( this.activePage <= 1) {
+                this.activePage
+            } else {
+                this.activePage -= 1
+            }
         },
         handleNext() {
-            console.log('handleNext')
+            this.$emit( 'handleActivePage', this.activePage)
+            if (this.activePage >= this.totalPages.length) {
+                this.activePage
+            } else {
+                this.activePage += 1
+            }
+        },
+        handlePageNumber(index) {
+            this.$emit( 'handleActivePage', this.activePage)
+            this.activePage = index + 1
+        }
+    },
+    computed: {
+        visibleProducts() {
+            this.productsList.filter(products => product.id === 2)
+        },
+        totalPages() {
+            let arr = []
+            for (let i = 1; i < this.productsList.length / 10; i++) {
+                arr.push(i)
+            }
+            return arr
         }
     }
 }
@@ -35,6 +67,7 @@ export default {
 
 <style lang="scss" scoped>
     .box--pagination {
+        width: 100%;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -59,7 +92,10 @@ export default {
         background: url('./../../static/PartsSlider/arrow_right--dark_hover.png') no-repeat;
     }
     .pagination__numbers {
-        padding: 0 30px;
+        width: 100%;
+        flex-wrap: wrap;
+        // padding: 0 30px;
+        display: flex;
     }
     .pagination__number {
         padding: 0;
@@ -77,5 +113,12 @@ export default {
             font-weight: bold;
             cursor: pointer;
         }
+    }
+    .text, .text--bold {
+        font-size: 10px;
+        line-height: 10px;
+    }
+    .box {
+        width: 100%;
     }
 </style>

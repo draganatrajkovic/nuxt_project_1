@@ -3,19 +3,21 @@
 
         <div 
             class="product box__section" 
-            :style="{'background-image': 'url(' + /*require(`./../../../../static/listing/BlockProducts/${product.img}`)*/ + ')'}"
+            :style="{ 'background-image': 'url(' + product.fws_image + ')' }"
         >
             <div class="top-content__wrap box__section box__section--inline">
-                <div class="top-content  ">
+                <div class="top-content box__section ">
                     <div class="top-content__title__wrap">
-                        <h1 class="top-content__title">{{product.title}}</h1>
+                        <h1 class="top-content__title">{{product.fws_title}}</h1>
                     </div>
                     <div class="top-content__quality__wrap">
-                        <p class="text text--white top-content__quality">{{product.productQuallity}}</p>
+                        <div class="top-content__quality">
+                            <p class="text text--white ">{{product.fws_slug}}</p>
+                        </div>
                     </div>
                 </div>
                 <div class="top-content__source box__section">
-                    <p class="text text--right text__source">{{product.ligthSource}}</p>
+                    <p class="text text--right text__source">{{product.fws_sku}}</p>
                 </div>
             </div>
 
@@ -63,13 +65,13 @@
                     <div class="bottom-content__icon">
                         <img src="~/static/listing/BlockProducts/icon_diffuser.png" />
                     </div>
-                    <p class="text">{{product.diffuserType}}</p>
+                    <p class="text">{{product['pa_base-filter']}}</p>
                 </div>
                 <div class="bottom-content__material box__section box__section--inline box__section--half">
                     <div class="bottom-content__icon">
                         <img src="~/static/listing/BlockProducts/icon_material.png" />
                     </div>
-                    <p class="text">{{product.material}}</p>
+                    <p class="text">{{product['pa_base-filter']}}</p>
                 </div>
             </div>
 
@@ -79,9 +81,7 @@
 
 <script>
 export default {
-    props:[
-        'product'
-    ],
+    props:['product'],
     data() {
         return {
             expandedButtonAdd: false,
@@ -135,11 +135,17 @@ export default {
         justify-content: space-between;
         align-items: flex-start;
     }
+    .top-content__quality__wrap {
+        display: flex;
+    }
     .top-content__quality {
-        font-size: 14px;
         background-color: #d78772;
+        display: flex;
+
+        font-size: 14px;
         border-radius: 5px;
         text-align: center;
+        padding: 0 10px;
     }
 
     .top-content__source {
