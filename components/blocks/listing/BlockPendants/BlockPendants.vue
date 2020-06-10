@@ -47,7 +47,13 @@
                         <ul v-for="(preformance, index) in pendant.preformances" :key="index" class="block-pendants__part__hidden" >
                             <li>
                                 <label>
-                                    <input type='checkbox'>
+                                    <!-- dont'forget value in array v-model -->
+                                    <input 
+                                        type='checkbox'
+                                        :value="preformance"
+                                        v-model="selectedPerformances"
+                                        @change="handleCheckbox($event)"
+                                    >
                                     <span></span>
                                     {{preformance.name}}
                                 </label>
@@ -58,10 +64,13 @@
             </div>
             
             <div class="box__section box__section--inline block-pendants__tags">
-                <ul v-for="(tag, index) in tags" :key="index" class="block-pendants__tag">
+                <ul v-for="(tag, index) in selectedPerformances" :key="index" class="block-pendants__tag">
                     <li>
-                        <p class="text block-pendants__tag__text">{{tag.title}}:<span class="text--bold">{{tag.spec}}</span>
-                        <span class="text--bold tag__close-button" @click="handleCloseTag(tag.id)">x</span></p>
+                        <p class="text block-pendants__tag__text"> 
+                            {{ showName(pendants.find(pendant => pendant.preformances.find(p => p.term_id == tag.term_id)).name) }} :
+                            <!-- use find(), not filter() -->
+                            <span class="text--bold">{{tag.name}}</span>
+                        <span class="text--bold tag__close-button" @click="handleCloseTag(tag.term_id)">x</span></p>
                     </li>
                 </ul>
             </div>
@@ -76,28 +85,34 @@ export default {
     data() {
         return {
             pendants: pendantService.all(),
-            tags: [
-                {id: 0, title:'Light source', spec:'Fluorescent'},
-                {id: 1, title:'Finish', spec:'Gold'}
-            ]
+            selectedPerformances: []
+        }
+    },
+    computed: {
+        tagName(tagId) {
+            // computed with arguments doesn't work
+            return this.pendants.find(pendant => pendant.preformances.find(p => p.term_id == tagId)).name
         }
     },
     watch: {
         pendants() {
-            console.log(this.pendants)
+            // console.log(pendants)
         }
     },
     methods: {
         handleDropDown(pendantId) {
             pendantService.isSelected(pendantId)
         },
-        handleCloseTag(tagId) {
-            this.tags = this.tags.filter(tag => tag.id != tagId)
-        },
         showName(pendantName) {
             let name = pendantName.toUpperCase().replace(/^pa_+/i, '').replace(/_/g, ' ').replace(/-/g, ' ')
             return name
-        }
+        },
+        handleCheckbox() {
+            console.log(this.selectedPerformances)
+        },
+        handleCloseTag(tagId) {
+            this.selectedPerformances = this.selectedPerformances.filter(tag => tag.term_id != tagId)
+        },
     }
 }
 </script>
