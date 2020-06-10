@@ -7,7 +7,7 @@
 
             <div class="block-pendants__list">
                 <ul v-for="(pendant, index) in pendants" :key="index" 
-                    :class="[hiddenContent 
+                    :class="[pendant.isSelected 
                         ? 'block-pendants__part__wrap '
                         : 'block-pendants__part__wrap block-pendants__part__wrap--selected' 
                     ]"
@@ -15,27 +15,27 @@
 
                     <li class="block-pendants__part">
                         <div 
-                            :class="[hiddenContent 
+                            :class="[pendant.isSelected 
                                 ? 'block-pendants__part__top-border block-pendants__part__top-border--selected'
                                 : 'block-pendants__part__top-border' 
                             ]">
                         </div>
 
                         <div class="block-pendants__part__content">
-                            <div :class="[hiddenContent
+                            <div :class="[pendant.isSelected
                                 ? 'block-pendants__part__hidden box__section box__section--inline' 
                                 : 'block-pendants__part__visible box__section box__section--inline'
                                 ]"
                             >
                                 <div class="block-pendants__part__title">
-                                    <p class="text text--bold block-pendants__part__title__text">{{pendant.title}}</p>
+                                    <p class="text text--bold block-pendants__part__title__text">{{showName(pendant.name)}}</p>
                                 </div>
                                 <div class="block-pendants__part__arrow">
                                     <img 
                                         src="~/static/Icons/icon_arrow-bottom_drop-down.png" 
-                                        :class="[hiddenContent ? 'arrow-top arrow' : 'arrow-bottom arrow']"
+                                        :class="[pendant.isSelected ? 'arrow-top arrow' : 'arrow-bottom arrow']"
                                         alt="arrow-down" 
-                                        @click="handleDropDown"
+                                        @click="handleDropDown(pendant.id)"
                                     />
                                 </div>
                             </div>
@@ -43,13 +43,13 @@
 
                     </li>
 
-                    <div v-if="hiddenContent">
+                    <div v-if="pendant.isSelected">
                         <ul v-for="(preformance, index) in pendant.preformances" :key="index" class="block-pendants__part__hidden" >
                             <li>
                                 <label>
                                     <input type='checkbox'>
                                     <span></span>
-                                    {{preformance}}
+                                    {{preformance.name}}
                                 </label>
                             </li>
                         </ul>
@@ -71,24 +71,32 @@
 
 <script>
 import { pendantService } from './PendantsService'
+import {  mapGetters } from 'vuex'
 export default {
     data() {
         return {
             pendants: pendantService.all(),
-            // totalPendants: pendantService.totalPendants(),
-            hiddenContent: false,
             tags: [
                 {id: 0, title:'Light source', spec:'Fluorescent'},
                 {id: 1, title:'Finish', spec:'Gold'}
             ]
         }
     },
+    watch: {
+        pendants() {
+            console.log(this.pendants)
+        }
+    },
     methods: {
-        handleDropDown() {
-            this.hiddenContent = !this.hiddenContent
+        handleDropDown(pendantId) {
+            pendantService.isSelected(pendantId)
         },
         handleCloseTag(tagId) {
             this.tags = this.tags.filter(tag => tag.id != tagId)
+        },
+        showName(pendantName) {
+            let name = pendantName.toUpperCase().replace(/^pa_+/i, '').replace(/_/g, ' ').replace(/-/g, ' ')
+            return name
         }
     }
 }

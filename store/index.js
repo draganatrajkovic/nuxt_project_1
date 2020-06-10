@@ -5,7 +5,7 @@ import axios from 'axios'
 
 export const state = () => ({
     productsList: [], 
-    product: {}
+    product: {},
 })
 
 export const getters = {

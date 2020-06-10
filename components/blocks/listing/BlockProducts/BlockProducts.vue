@@ -47,7 +47,7 @@ export default {
             arr = this.productsList.filter(product => this.productsList.indexOf(product)<= this.activePage *10 && 
                 this.productsList.indexOf(product)>this.activePage *10 -10)
                 
-            console.log(bottomLimit, topLimit)
+            // console.log(bottomLimit, topLimit)
             return arr
         }
     },
@@ -56,7 +56,12 @@ export default {
             this.activePage = activePage
             // console.log('All products ' + this.activePage)
         }
-    }
+    },
+    watch: {
+        productsList() {
+            console.log(this.productsList)
+        }
+    },
 }
 </script>
 
