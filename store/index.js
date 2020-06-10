@@ -6,17 +6,25 @@ import axios from 'axios'
 export const state = () => ({
     productsList: [], 
     product: {},
+    selectedPerformances: []
 })
 
 export const getters = {
     getProductsList(state) {
         return state.productsList
+    },
+    getSelectedPerformances(state) {
+        return state.selectedPerformances
     }
 }
 
 export const mutations = {
     setProducts(state, products) {
         state.productsList = products
+    },
+    setSelectedPerformances(state, selectedPerformances) {
+        state.selectedPerformances = selectedPerformances
+        // alert(state.selectedPerformances.length)
     }
 }
 

@@ -23,20 +23,18 @@ export default {
     data() {
         return {
             product: '',
-            activePage: 1
+            activePage: 1, 
+            filteredProductsArr: []
         }
     },
     beforeMount() {
         this.$store.dispatch('dispatchSetProducts');
-    },
-    watch: {
-        productsList() {
-            // console.log(this.productsList)
-        }
+        // this.$store.dispatch('getnebitno');
     },
     computed: {
         ...mapGetters({
             productsList: 'getProductsList' ,
+            selectedPerformances: 'getSelectedPerformances',
         }), 
         visibleProducts() {
             let arr = []
@@ -47,19 +45,42 @@ export default {
             arr = this.productsList.filter(product => this.productsList.indexOf(product)<= this.activePage *10 && 
                 this.productsList.indexOf(product)>this.activePage *10 -10)
                 
-            // console.log(bottomLimit, topLimit)
             return arr
+        },
+        filteredProducts() {
+            if (this.selectedPerformances.length == 0) {
+                return this.productsList
+            } else {
+                
+                this.selectedPerformances.filter (preformance => {
+
+                    // treba naci kom pendantu pripada dati performance
+                    let pendantName = this.productsList.find(pendant => pendant.preformances.find(p => p.id == preformance.id)).name
+
+                    //filtriramo sve proizvode po name-u / pendantName
+                    this.productsList.filter(product => {
+                        if(product.pendantName == performance.name) {
+                            this.filteredProductsArr.push(product)
+                        }
+                    })
+                })
+
+                //filtriramo niz za svim cekiranim specifikacijama pendant.name
+                //proveravamo za svaku specifikaciju da li postoji product koji ima za isti key istu vrednost
+            }
         }
     },
     methods: {
         setActivePage(activePage) {
             this.activePage = activePage
-            // console.log('All products ' + this.activePage)
         }
     },
     watch: {
         productsList() {
-            console.log(this.productsList)
+            // console.log(this.productsList)
+        },
+        selectedPerformances() {
+            console.log('Block products: ' + this.selectedPerformances)
         }
     },
 }

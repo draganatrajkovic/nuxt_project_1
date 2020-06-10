@@ -85,13 +85,14 @@ export default {
     data() {
         return {
             pendants: pendantService.all(),
-            selectedPerformances: []
+            selectedPerformances: [],
+            
         }
     },
     computed: {
         tagName(tagId) {
             // computed with arguments doesn't work
-            return this.pendants.find(pendant => pendant.preformances.find(p => p.term_id == tagId)).name
+            // return this.pendants.find(pendant => pendant.preformances.find(p => p.term_id == tagId)).name
         }
     },
     watch: {
@@ -108,6 +109,7 @@ export default {
             return name
         },
         handleCheckbox() {
+            this.$store.commit('setSelectedPerformances', this.selectedPerformances)
             console.log(this.selectedPerformances)
         },
         handleCloseTag(tagId) {
