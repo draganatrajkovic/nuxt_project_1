@@ -61,16 +61,32 @@ export default {
 
                     // kom pendantu pripada dati performance
                     let pendantName = this.pendants.find(pendant => pendant.performances.find(p => p.term_id == performance.term_id)).name
-                    console.log('Pendant name is: ' + pendantName)
+                    // console.log('Pendant name is: ' + pendantName)
 
                     //filtriramo sve proizvode po name-u / pendantName
                     //product[pendantName] - moramo koristiti uglaste kada je key sa spec karakterima tipa 'pa_delivered-loumens'
                     let filteredProducts = this.productsList.filter(product => { 
-                        if(product[pendantName] == performance.term_id) { 
-                            totalSelectedProducts.push(product)
-                        }
+
+                                    //ovo radi ali ne za arr
+                                    // if(product[pendantName] == performance.term_id) { 
+                                    //     totalSelectedProducts.push(product)
+                                    // }
+                        
+                        // product.key[] - provera da li e iz niza  ima vrednost checkboxa
+                        let productPerformancesArr = product[pendantName].split(',')
+                        productPerformancesArr.filter(value => {
+                            if (value == performance.term_id) {
+                                if(totalSelectedProducts.includes(product)) {
+                                    totalSelectedProducts
+                                } else {
+                                    totalSelectedProducts.push(product)
+                                    console.log('Product: ' + product.ID)
+                                }
+                            }
+                            return productPerformancesArr
+                        })
+                        return filteredProducts
                     })
-                    console.log('Products selected for one filter : ' + filteredProducts.length)
                     console.log('Total selected products : ' + totalSelectedProducts.length)
                 })
                 this.$store.commit('setFilteredProductList', totalSelectedProducts)
