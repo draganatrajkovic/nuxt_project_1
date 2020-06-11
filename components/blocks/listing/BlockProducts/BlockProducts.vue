@@ -3,7 +3,7 @@
         <div class="box box--column">
             <PartPagination :productsList="productsList" @handleActivePage="setActivePage" />
             <div class="box box__block-products">
-                <ul v-for="(product, index) in filteredProducts" :key="index" class="box__section--block-products">
+                <ul v-for="(product, index) in visibleProducts" :key="index" class="box__section--block-products">
                     <SingleProduct :product="product" />
                 </ul>
             </div>
@@ -39,18 +39,21 @@ export default {
         }), 
         visibleProducts() {
             //paginaciju korigovati nakon filtriranja
-            let arr = []
-            let bottomLimit=(this.activePage *10) -10
-            let topLimit = this.activePage *10
             let i
 
-            arr = this.productsList.filter(product => this.productsList.indexOf(product)<= this.activePage *10 && 
-                this.productsList.indexOf(product)>this.activePage *10 -10)
-                
+            // arr = this.productsList.filter(product => this.productsList.indexOf(product)<= this.activePage *10 && 
+            //     this.productsList.indexOf(product)>this.activePage *10 -10)
+
+            let arr = this.filteredProducts.filter(product => 
+                this.filteredProducts.indexOf(product) + 1 <= this.activePage *10 && 
+                this.filteredProducts.indexOf(product) + 1 > this.activePage *10 -10
+            )
             return arr
+                
         },
         filteredProducts() {
             if (this.selectedPerformances.length == 0) {
+                this.$store.commit('setFilteredProductList', this.productsList)
                 return this.productsList
             } else {
                 let totalSelectedProducts = [] //zato sto mozemo cekirati vise od jednog filtera
@@ -70,7 +73,7 @@ export default {
                     console.log('Products selected for one filter : ' + filteredProducts.length)
                     console.log('Total selected products : ' + totalSelectedProducts.length)
                 })
-                // this.$store.commit('', totalSelectedProducts)
+                this.$store.commit('setFilteredProductList', totalSelectedProducts)
                 return totalSelectedProducts
             }
         },

@@ -5,6 +5,7 @@ import axios from 'axios'
 
 export const state = () => ({
     productsList: [], 
+    filteredProductList: [], //for pagination
     product: {},
     selectedPerformances: []
 })
@@ -15,6 +16,9 @@ export const getters = {
     },
     getSelectedPerformances(state) {
         return state.selectedPerformances
+    },
+    getFilteredProductList(state) {
+        return state.filteredProductList
     }
 }
 
@@ -30,9 +34,9 @@ export const mutations = {
         }
         // alert(state.selectedPerformances.length)
     },
-    // removeTag(state, selectedPerformances) {
-    //     state.selectedPerformances = selectedPerformances
-    // }
+    setFilteredProductList(state, filteredProductList) {
+        state.filteredProductList = filteredProductList
+    }
 }
 
 export const actions = {

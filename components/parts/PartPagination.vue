@@ -19,9 +19,10 @@
 </template>
 
 <script>
+import {  mapGetters } from 'vuex';
 export default {
     props: [
-        'productsList'
+        // 'productsList'
     ],
     data(){
         return {
@@ -53,16 +54,25 @@ export default {
         }
     },
     computed: {
-        visibleProducts() {
-            this.productsList.filter(products => product.id === 2)
-        },
         totalPages() {
             let arr = []
-            for (let i = 1; i < this.productsList.length / 10; i++) {
-                arr.push(i)
+            let reminder = this.filteredProductList.length % 10
+            if (reminder > 0 ) {
+                this.filteredProductList.length = this.filteredProductList.length + 1
+                for (let i = 1; i < (this.filteredProductList.length / 10)+1; i++) {
+                    arr.push(i)
+                }
+                return arr
+            } else {
+                for (let i = 1; i < (this.filteredProductList.length / 10)+1; i++) {
+                    arr.push(i)
+                }
+                return arr
             }
-            return arr
-        }
+        },
+         ...mapGetters({
+            filteredProductList: 'getFilteredProductList' 
+        }), 
     }
 }
 </script>
