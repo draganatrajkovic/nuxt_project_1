@@ -44,18 +44,18 @@
                     </li>
 
                     <div v-if="pendant.isSelected">
-                        <ul v-for="(preformance, index) in pendant.preformances" :key="index" class="block-pendants__part__hidden" >
+                        <ul v-for="(performance, index) in pendant.performances" :key="index" class="block-pendants__part__hidden" >
                             <li>
                                 <label>
                                     <!-- dont'forget value in array v-model -->
                                     <input 
                                         type='checkbox'
-                                        :value="preformance"
+                                        :value="performance"
                                         v-model="selectedPerformances"
                                         @change="handleCheckbox($event)"
                                     >
                                     <span></span>
-                                    {{preformance.name}}
+                                    {{performance.name}}
                                 </label>
                             </li>
                         </ul>
@@ -67,7 +67,7 @@
                 <ul v-for="(tag, index) in selectedPerformances" :key="index" class="block-pendants__tag">
                     <li>
                         <p class="text block-pendants__tag__text"> 
-                            {{ showName(pendants.find(pendant => pendant.preformances.find(p => p.term_id == tag.term_id)).name) }} :
+                            {{ showName(pendants.find(pendant => pendant.performances.find(p => p.term_id == tag.term_id)).name) }} :
                             <!-- use find(), not filter() -->
                             <span class="text--bold">{{tag.name}}</span>
                         <span class="text--bold tag__close-button" @click="handleCloseTag(tag.term_id)">x</span></p>
@@ -92,7 +92,7 @@ export default {
     computed: {
         tagName(tagId) {
             // computed with arguments doesn't work
-            // return this.pendants.find(pendant => pendant.preformances.find(p => p.term_id == tagId)).name
+            // return this.pendants.find(pendant => pendant.performances.find(p => p.term_id == tagId)).name
         }
     },
     watch: {
@@ -114,6 +114,7 @@ export default {
         },
         handleCloseTag(tagId) {
             this.selectedPerformances = this.selectedPerformances.filter(tag => tag.term_id != tagId)
+            this.$store.commit('setSelectedPerformances', this.selectedPerformances)
         },
     }
 }

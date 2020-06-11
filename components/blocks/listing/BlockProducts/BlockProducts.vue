@@ -3,7 +3,7 @@
         <div class="box box--column">
             <PartPagination :productsList="productsList" @handleActivePage="setActivePage" />
             <div class="box box__block-products">
-                <ul v-for="(product, index) in visibleProducts" :key="index" class="box__section--block-products">
+                <ul v-for="(product, index) in filteredProducts" :key="index" class="box__section--block-products">
                     <SingleProduct :product="product" />
                 </ul>
             </div>
@@ -14,6 +14,7 @@
 <script>
 import PartPagination from '~/components/parts/PartPagination.vue';
 import SingleProduct from './BlockProductsProduct.vue';
+import { pendantService } from './../BlockPendants/PendantsService'
 import {  mapGetters } from 'vuex';
 export default {
     components: {
@@ -24,7 +25,7 @@ export default {
         return {
             product: '',
             activePage: 1, 
-            filteredProductsArr: []
+            pendants: pendantService.all(),
         }
     },
     beforeMount() {
@@ -37,6 +38,7 @@ export default {
             selectedPerformances: 'getSelectedPerformances',
         }), 
         visibleProducts() {
+            //paginaciju korigovati nakon filtriranja
             let arr = []
             let bottomLimit=(this.activePage *10) -10
             let topLimit = this.activePage *10
@@ -51,24 +53,27 @@ export default {
             if (this.selectedPerformances.length == 0) {
                 return this.productsList
             } else {
-                
-                this.selectedPerformances.filter (preformance => {
+                let totalSelectedProducts = [] //zato sto mozemo cekirati vise od jednog filtera
+                this.selectedPerformances.filter (performance => {
 
-                    // treba naci kom pendantu pripada dati performance
-                    let pendantName = this.productsList.find(pendant => pendant.preformances.find(p => p.id == preformance.id)).name
+                    // kom pendantu pripada dati performance
+                    let pendantName = this.pendants.find(pendant => pendant.performances.find(p => p.term_id == performance.term_id)).name
+                    console.log('Pendant name is: ' + pendantName)
 
                     //filtriramo sve proizvode po name-u / pendantName
-                    this.productsList.filter(product => {
-                        if(product.pendantName == performance.name) {
-                            this.filteredProductsArr.push(product)
+                    //product[pendantName] - moramo koristiti uglaste kada je key sa spec karakterima tipa 'pa_delivered-loumens'
+                    let filteredProducts = this.productsList.filter(product => { 
+                        if(product[pendantName] == performance.term_id) { 
+                            totalSelectedProducts.push(product)
                         }
                     })
+                    console.log('Products selected for one filter : ' + filteredProducts.length)
+                    console.log('Total selected products : ' + totalSelectedProducts.length)
                 })
-
-                //filtriramo niz za svim cekiranim specifikacijama pendant.name
-                //proveravamo za svaku specifikaciju da li postoji product koji ima za isti key istu vrednost
+                // this.$store.commit('', totalSelectedProducts)
+                return totalSelectedProducts
             }
-        }
+        },
     },
     methods: {
         setActivePage(activePage) {
@@ -80,7 +85,7 @@ export default {
             // console.log(this.productsList)
         },
         selectedPerformances() {
-            console.log('Block products: ' + this.selectedPerformances)
+            // console.log('Block products: ' + this.selectedPerformances)
         }
     },
 }

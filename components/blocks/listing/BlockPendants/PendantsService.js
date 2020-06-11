@@ -2,7 +2,7 @@ const pendants = [
     {
         id: 1, 
         name: "pa_wattage",
-        preformances:[
+        performances:[
             {"term_id":13687,"name":"10","slug":"10","term_group":0,"term_taxonomy_id":13687,"taxonomy":"pa_wattage","description":"","parent":0,"count":8,"filter":"raw","hidden":null},
             {"term_id":13688,"name":"14","slug":"14","term_group":0,"term_taxonomy_id":13688,"taxonomy":"pa_wattage","description":"","parent":0,"count":1,"filter":"raw","hidden":null},
             {"term_id":13684,"name":"3","slug":"3","term_group":0,"term_taxonomy_id":13684,"taxonomy":"pa_wattage","description":"","parent":0,"count":2,"filter":"raw","hidden":null},
@@ -26,7 +26,7 @@ const pendants = [
     {
         id: 2, 
         name: "pa_lens-filter",
-        preformances:[
+        performances:[
             {"term_id":11786,"name":"Acrylic","slug":"acrylic","term_group":0,"term_taxonomy_id":11786,"taxonomy":"pa_lens-filter","description":"","parent":0,"count":459,"filter":"raw","hidden":true},
             {"term_id":13656,"name":"Alabaster","slug":"alabaster","term_group":0,"term_taxonomy_id":13656,"taxonomy":"pa_lens-filter","description":"","parent":0,"count":1,"filter":"raw","hidden":true},
             {"term_id":12093,"name":"Fabric","slug":"fabric","term_group":0,"term_taxonomy_id":12093,"taxonomy":"pa_lens-filter","description":"","parent":0,"count":50,"filter":"raw","hidden":true},
@@ -38,7 +38,7 @@ const pendants = [
     {
         id: 3, 
         name: "pa_voltage",
-        preformances:[
+        performances:[
             {"term_id":11726,"name":"ND - 120V NON DIMMABLE","slug":"nd-120v-non-dimmable","term_group":0,"term_taxonomy_id":11726,"taxonomy":"pa_voltage","description":"","parent":0,"count":1106,"filter":"raw","hidden":true},
             {"term_id":11728,"name":"DV - 120V/277V NON DIMMABLE","slug":"dv-120v-277v-non-dimmable","term_group":0,"term_taxonomy_id":11728,"taxonomy":"pa_voltage","description":"","parent":0,"count":1032,"filter":"raw","hidden":true},
             {"term_id":11727,"name":"TD - 120V TRIAC/ELV DIMMABLE","slug":"td-120v-triac-elv-dimmable","term_group":0,"term_taxonomy_id":11727,"taxonomy":"pa_voltage","description":"","parent":0,"count":1032,"filter":"raw","hidden":true},
@@ -49,7 +49,7 @@ const pendants = [
     {
         id: 4, 
         name: "product_locations",
-        preformances:[
+        performances:[
             {"term_id":11747,"name":"Damp","slug":"damp","term_group":0,"term_taxonomy_id":11747,"taxonomy":"product_locations","description":"","parent":0,"count":810,"filter":"raw","hidden":true},
             {"term_id":13101,"name":"Dry","slug":"dry","term_group":0,"term_taxonomy_id":13101,"taxonomy":"product_locations","description":"","parent":0,"count":8,"filter":"raw","hidden":true},
             {"term_id":11795,"name":"Wet","slug":"wet","term_group":0,"term_taxonomy_id":11795,"taxonomy":"product_locations","description":"","parent":0,"count":278,"filter":"raw","hidden":true}
@@ -59,7 +59,7 @@ const pendants = [
     {
         id: 5, 
         name: "pa_base-filter",
-        preformances:[
+        performances:[
             {"term_id":11742,"name":"Aluminum","slug":"aluminum","term_group":0,"term_taxonomy_id":11742,"taxonomy":"pa_base-filter","description":"","parent":0,"count":303,"filter":"raw","hidden":true},
             {"term_id":12243,"name":"Polycarbonate","slug":"polycarbonate","term_group":0,"term_taxonomy_id":12243,"taxonomy":"pa_base-filter","description":"","parent":0,"count":96,"filter":"raw","hidden":true},
             {"term_id":11774,"name":"Steel","slug":"steel","term_group":0,"term_taxonomy_id":11774,"taxonomy":"pa_base-filter","description":"","parent":0,"count":708,"filter":"raw","hidden":true}
@@ -69,7 +69,7 @@ const pendants = [
     {
         id: 6, 
         name: "pa_delivered-loumens",
-        preformances:[
+        performances:[
             {"term_id":13691,"name":"4200","slug":"4200","term_group":0,"term_taxonomy_id":13691,"taxonomy":"pa_delivered-loumens","description":"","parent":0,"count":1,"filter":"raw","hidden":null},
             {"term_id":11844,"name":"450","slug":"450","term_group":0,"term_taxonomy_id":11844,"taxonomy":"pa_delivered-loumens","description":"","parent":0,"count":106,"filter":"raw","hidden":true},
             {"term_id":11845,"name":"675","slug":"675","term_group":0,"term_taxonomy_id":11845,"taxonomy":"pa_delivered-loumens","description":"","parent":0,"count":106,"filter":"raw","hidden":true},
@@ -96,7 +96,7 @@ const pendants = [
     {
         id: 7, 
         name: "pa_special-options-accessories",
-        preformances:[
+        performances:[
             {"term_id":13559,"name":"Bar Twist","slug":"bar-twist","term_group":0,"term_taxonomy_id":13559,"taxonomy":"pa_special-options-accessories","description":"","parent":0,"count":2,"filter":"raw","hidden":null},
             {"term_id":11737,"name":"Back Box (Extended Base)","slug":"bb-back-box-extended-base","term_group":0,"term_taxonomy_id":11737,"taxonomy":"pa_special-options-accessories","description":"","parent":0,"count":514,"filter":"raw","hidden":true},
             {"term_id":11738,"name":"Back Box (Extended Base) (Conduit Holes Optional)","slug":"bbx-back-box-extended-base-conduit-holes-optional","term_group":0,"term_taxonomy_id":11738,"taxonomy":"pa_special-options-accessories","description":"","parent":0,"count":513,"filter":"raw","hidden":true},
@@ -135,7 +135,7 @@ const pendants = [
     {
         id: 8, 
         name: "pa_special-options-technology",
-        preformances:[
+        performances:[
             {"term_id":13086,"name":"Bi-Level Dimming","slug":"bld-bi-level-dimming","term_group":0,"term_taxonomy_id":13086,"taxonomy":"pa_special-options-technology","description":"","parent":0,"count":49,"filter":"raw","hidden":true},
             {"term_id":11732,"name":"Emergency","slug":"emg-emergency","term_group":0,"term_taxonomy_id":11732,"taxonomy":"pa_special-options-technology","description":"","parent":0,"count":1026,"filter":"raw","hidden":true},
             {"term_id":11733,"name":"Emergency Remote","slug":"emgr-emergency-remote","term_group":0,"term_taxonomy_id":11733,"taxonomy":"pa_special-options-technology","description":"","parent":0,"count":1026,"filter":"raw","hidden":true},

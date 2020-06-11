@@ -23,9 +23,16 @@ export const mutations = {
         state.productsList = products
     },
     setSelectedPerformances(state, selectedPerformances) {
-        state.selectedPerformances = selectedPerformances
+        if (selectedPerformances.length == 0) {
+            state.selectedPerformances = []
+        } else {
+            state.selectedPerformances = selectedPerformances
+        }
         // alert(state.selectedPerformances.length)
-    }
+    },
+    // removeTag(state, selectedPerformances) {
+    //     state.selectedPerformances = selectedPerformances
+    // }
 }
 
 export const actions = {
