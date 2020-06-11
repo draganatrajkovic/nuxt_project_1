@@ -30,7 +30,6 @@ export default {
     },
     beforeMount() {
         this.$store.dispatch('dispatchSetProducts');
-        // this.$store.dispatch('getnebitno');
     },
     computed: {
         ...mapGetters({
@@ -38,18 +37,12 @@ export default {
             selectedPerformances: 'getSelectedPerformances',
         }), 
         visibleProducts() {
-            //paginaciju korigovati nakon filtriranja
             let i
-
-            // arr = this.productsList.filter(product => this.productsList.indexOf(product)<= this.activePage *10 && 
-            //     this.productsList.indexOf(product)>this.activePage *10 -10)
-
             let arr = this.filteredProducts.filter(product => 
                 this.filteredProducts.indexOf(product) + 1 <= this.activePage *10 && 
                 this.filteredProducts.indexOf(product) + 1 > this.activePage *10 -10
             )
             return arr
-                
         },
         filteredProducts() {
             if (this.selectedPerformances.length == 0) {
@@ -67,11 +60,6 @@ export default {
                     //product[pendantName] - moramo koristiti uglaste kada je key sa spec karakterima tipa 'pa_delivered-loumens'
                     let filteredProducts = this.productsList.filter(product => { 
 
-                                    //ovo radi ali ne za arr
-                                    // if(product[pendantName] == performance.term_id) { 
-                                    //     totalSelectedProducts.push(product)
-                                    // }
-                        
                         // product.key[] - provera da li e iz niza  ima vrednost checkboxa
                         let productPerformancesArr = product[pendantName].split(',')
                         productPerformancesArr.filter(value => {
@@ -91,6 +79,20 @@ export default {
                 })
                 this.$store.commit('setFilteredProductList', totalSelectedProducts)
                 return totalSelectedProducts
+
+
+                //logika:
+                // 1. npr. selektovan je wattage: 10
+                // 2. izdvojim sve elemente koji imaju wattage: 10 (dotle je uradjeno)
+
+                // 3. prodjem kroz niz proizvoda koje smo dobili nakon filtriranja
+                // 4. za svaki od proizvoda proverim da li za name wattage ima jos neku karakteristiku (znaci opet prolazim kroz niz wattage:[...])
+                // 5. recimo da su se pojavili proizvodi koji imaju wattage  [10, 14, 3] i [10, 21]
+                // 6. sve vrednosti koje su se pojavile za wattage stavljam u novi niz [10, 14, 3, 21]
+                // 7. u pendant tabu gde izlistava sve moguce opcije za wattage ostavim da mi prikaze samo one iz niza iznad
+
+                // 8. inicijalno pendant izlistava sve moguce opcije, prvi put kada se cekira checkbox pozvace metodu za filtriranje
+                // 9. kada se odcekira checkbox resetovace se na inicijalne vrednosti
             }
         },
     },
@@ -102,9 +104,6 @@ export default {
     watch: {
         productsList() {
             // console.log(this.productsList)
-        },
-        selectedPerformances() {
-            // console.log('Block products: ' + this.selectedPerformances)
         }
     },
 }

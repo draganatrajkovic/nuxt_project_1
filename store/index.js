@@ -34,8 +34,8 @@ export const mutations = {
         }
         // alert(state.selectedPerformances.length)
     },
-    setFilteredProductList(state, filteredProductList) {
-        state.filteredProductList = filteredProductList
+    setFilteredProductList(state, totalSelectedProducts) {
+        state.filteredProductList = totalSelectedProducts
     }
 }
 
