@@ -35,6 +35,7 @@ export default {
         ...mapGetters({
             productsList: 'getProductsList' ,
             selectedPerformances: 'getSelectedPerformances',
+            visiblePerformances: 'getVisiblePerformances'
         }), 
         visibleProducts() {
             let i
@@ -50,22 +51,29 @@ export default {
         // 2. izdvojim sve elemente koji imaju wattage: 10 (dotle je uradjeno)
 
         // 3. prodjem kroz niz proizvoda koje smo dobili nakon filtriranja
-        // 4. za svaki od proizvoda proverim da li za name wattage ima jos neku karakteristiku (znaci opet prolazim kroz niz wattage:[...])
-        // 5. recimo da su se pojavili proizvodi koji imaju wattage  [10, 14, 3] i [10, 21]
-        // 6. sve vrednosti koje su se pojavile za wattage stavljam u novi niz [10, 14, 3, 21]
-        // 7. u pendant tabu gde izlistava sve moguce opcije za wattage ostavim da mi prikaze samo one iz niza iznad
+        // 4. za svaki od proizvoda proverim vrednosti svih kijeva 
+            // ako je niz prodjem kroz taj niz name:[...]
+            // ako je string samo uporedim vrednosti
+            // i proverim da li se svaka vrednost nalazi u nizu visiblePerformances
+        // 5. ako ne postoji u tom nizu dodajem ga
+        // 6. inicijalno pendant izlistava sve moguce opcije 
+            //f-ja ako je visiblePerformances prazan da izlista sve koarakteristike
+            // prvi put kada se cekira checkbox pozvace metodu za filtriranje
+            //cekirani checkbox se obavezno nalazi i u nizu visiblePerformances
+        // 7. ako je vrednost pendanta u nizu visiblePerformances, bice vidljiva
+        // 8. samo checkboksovi koji su rucno cekirani ce se i videti kao cekirani (oni su u oba niza: visiblePerformances i selectedPerformances )
+                // ostali ce biti samo vidljivi
 
-        // 8. inicijalno pendant izlistava sve moguce opcije, prvi put kada se cekira checkbox pozvace metodu za filtriranje
-        // 9. kada se odcekira checkbox resetovace se na inicijalne vrednosti
-
+        // 9. kada se odcekira checkbox ta vrednost se izbacuje iz nisa ukupnih selektovanih ckeckboxova....
 
         filteredProducts() {
             if (this.selectedPerformances.length == 0) {
                 this.$store.commit('setFilteredProductList', this.productsList)
                 return this.productsList
             } else {
-                let totalSelectedProducts = [] //zato sto mozemo cekirati vise od jednog filtera
+                let totalSelectedProducts = []
 
+                // selectedPerformances - lista cekiranih checkboxova
                 this.selectedPerformances.filter (performance => {
 
                     // kom pendantu pripada dati performance
@@ -84,7 +92,11 @@ export default {
                     console.log('Total selected products : ' + totalSelectedProducts.length)
                 })
                 this.$store.commit('setFilteredProductList', totalSelectedProducts)
+
+                this.checkIfAllProductPerformancesAreInArr(totalSelectedProducts)
+
                 return totalSelectedProducts
+
             }
         },
     },
@@ -117,13 +129,34 @@ export default {
                 }
                 return specificValuesArr
             })
+        },
+        checkIfAllProductPerformancesAreInArr(totalSelectedProducts) {
+            // prolazimo kroz pentant nazive jer nam trebaju karakteristike proizvoda koje su samo pod tim key-em
+            this.pendants.filter(pendant => {
+                //svi filtrirani proizvodi
+                totalSelectedProducts.filter(product => {
+
+                    //od objekta izdvaja key i value - Object.entries(product)
+                    for (let [key, value] of Object.entries(product)) {
+                        if (key == pendant.name) {
+
+                            this.stringToArray(value).filter(v => {
+                                // console.log('PENDANT: ' + pendant.name + ' PRODUCT ID: ' + product.ID + ' KEY: ' + key )
+
+                                // za svaku vrednost radimo proveru za odredjeni key, jer razliciti key-evi mogu imati iste vrednosti
+                                if(!this.visiblePerformances.includes(v) && key == pendant.name) {
+                                    this.$store.commit('addVisiblePerformance', v)
+                                } 
+                            })
+                        }
+                    }
+                    // console.log('Visible performances for ' + product.ID + ' : ' + this.visiblePerformances.length)
+                })
+            })
+            console.log('Visible performances in total: ' + this.visiblePerformances.length)
         }
-    },
-    watch: {
-        productsList() {
-            // console.log(this.productsList)
-        }
-    },
+        
+    } //---methods
 }
 </script>
 

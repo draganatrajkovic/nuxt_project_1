@@ -1,4 +1,4 @@
-//razlika u odnosu na normalno koriscenje Vuex-a je da moramo eksportovati svaki aset 
+//nuxt: razlika u odnosu na normalno koriscenje Vuex-a je da moramo eksportovati svaki aset 
 // (state, getters...) umesto celu store instancu;
 //druga razlika je da state mora biti funkcija koja vraca objekat
 import axios from 'axios'
@@ -7,7 +7,8 @@ export const state = () => ({
     productsList: [], 
     filteredProductList: [], //for pagination
     product: {},
-    selectedPerformances: []
+    selectedPerformances: [],
+    visiblePerformances: [],
 })
 
 export const getters = {
@@ -19,6 +20,9 @@ export const getters = {
     },
     getFilteredProductList(state) {
         return state.filteredProductList
+    },
+    getVisiblePerformances(state) {
+        return state.visiblePerformances
     }
 }
 
@@ -36,6 +40,9 @@ export const mutations = {
     },
     setFilteredProductList(state, totalSelectedProducts) {
         state.filteredProductList = totalSelectedProducts
+    },
+    addVisiblePerformance(state, performanceValue) {
+        state.visiblePerformances.push(performanceValue)
     }
 }
 

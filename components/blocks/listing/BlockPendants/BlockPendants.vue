@@ -6,7 +6,7 @@
             </div>
 
             <div class="block-pendants__list">
-                <ul v-for="(pendant, index) in pendants" :key="index" 
+                <ul v-for="(pendant, index) in pendantsAfterFiltering()" :key="index" 
                     :class="[pendant.isSelected 
                         ? 'block-pendants__part__wrap '
                         : 'block-pendants__part__wrap block-pendants__part__wrap--selected' 
@@ -45,8 +45,8 @@
 
                     <div v-if="pendant.isSelected">
                         <ul v-for="(performance, index) in pendant.performances" :key="index" class="block-pendants__part__hidden" >
-                            <li>
-                                <label>
+                            <li >
+                                <label v-if="!pendant.hidden">
                                     <!-- dont'forget value in array v-model -->
                                     <input 
                                         type='checkbox'
@@ -86,10 +86,12 @@ export default {
         return {
             pendants: pendantService.all(),
             selectedPerformances: [],
-            
         }
     },
     computed: {
+        ...mapGetters({
+            visiblePerformances: 'getVisiblePerformances'
+        }),
         tagName(tagId) {
             // computed with arguments doesn't work
             // return this.pendants.find(pendant => pendant.performances.find(p => p.term_id == tagId)).name
@@ -116,6 +118,44 @@ export default {
             this.selectedPerformances = this.selectedPerformances.filter(tag => tag.term_id != tagId)
             this.$store.commit('setSelectedPerformances', this.selectedPerformances)
         },
+
+        findPendantFromPerformanceId(pendants, performanceTermId) {
+            let pendantName = pendants.find(pendant => pendant.performances.find(p => p.term_id == performanceTermId)).name
+            return pendantName
+        },
+        pendantsAfterFiltering() {
+            if (this.visiblePerformances.length == 0) {
+                console.log(0)
+                return this.pendants
+            } else {
+                let copyPendants = this.pendants
+
+                // [1, 10, 20, 505]
+                // ['pa_wattage', 'pa_wattage', 'pa_lens-filter', 'pa_lens-filter']
+
+                copyPendants.filter(pendant => {
+
+                    this.visiblePerformances.filter(performance => {
+                        let performanceName = this.findPendantFromPerformanceId(this.pendants, performance)
+
+                        if (pendant.name == performanceName ) {
+                            let pendantPerformances = pendant.performances.filter(p => 
+                                // p.hidden = false
+                            )
+                        }
+                    })
+                })
+                console.log(copyPendants)
+                return copyPendants
+            }
+        }
+
+            // prvi put kada se cekira checkbox pozvace metodu za filtriranje
+            //cekirani checkbox se obavezno nalazi i u nizu visiblePerformances
+        // 7. ako je vrednost pendanta u nizu visiblePerformances, bice vidljiva
+        // 8. samo checkboksovi koji su rucno cekirani ce se i videti kao cekirani 
+            // (oni su u oba niza: visiblePerformances i selectedPerformances )
+            // ostali ce biti samo vidljivi
     }
 }
 </script>
