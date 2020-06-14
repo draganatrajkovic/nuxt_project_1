@@ -171,17 +171,5 @@ export default class PendantService {
     all() {
         return pendants;
     }
-    find(id) {
-        return pendants.find(pendant => pendant.id == id)
-    }
-    isSelected(pendantId) {
-        pendants.map((pendant) => {
-            if (pendant.id == pendantId) {
-                pendant.isSelected = !pendant.isSelected
-            } else {
-                // pendant.isSelected = false
-            }
-        })
-    }
 }
 export const pendantService = new PendantService()

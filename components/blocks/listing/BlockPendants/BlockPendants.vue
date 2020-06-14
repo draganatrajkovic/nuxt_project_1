@@ -46,8 +46,8 @@
                     <div v-if="pendant.isSelected">
                         <ul v-for="(performance, index) in pendant.performances" :key="index" class="block-pendants__part__hidden" >
                             <li >
-                                <label v-if="!pendant.hidden">
-                                    <!-- dont'forget value in array v-model -->
+                                <label v-if="performance.hidden === false">
+                                    <!-- dont'forget value in v-model for array -->
                                     <input 
                                         type='checkbox'
                                         :value="performance"
@@ -79,18 +79,20 @@
 </template>
 
 <script>
-import { pendantService } from './PendantsService'
 import {  mapGetters } from 'vuex'
 export default {
     data() {
         return {
-            pendants: pendantService.all(),
-            selectedPerformances: [],
+            selectedPerformances: []
         }
+    },
+    beforeMount() {
+        this.$store.commit('setAllPendantsVisible')
     },
     computed: {
         ...mapGetters({
-            visiblePerformances: 'getVisiblePerformances'
+            visiblePerformances: 'getVisiblePerformances',
+            pendants: 'getPendants'
         }),
         tagName(tagId) {
             // computed with arguments doesn't work
@@ -104,7 +106,7 @@ export default {
     },
     methods: {
         handleDropDown(pendantId) {
-            pendantService.isSelected(pendantId)
+            this.$store.commit('setPendantIsSelected', pendantId)
         },
         showName(pendantName) {
             let name = pendantName.toUpperCase().replace(/^pa_+/i, '').replace(/_/g, ' ').replace(/-/g, ' ')
@@ -118,44 +120,44 @@ export default {
             this.selectedPerformances = this.selectedPerformances.filter(tag => tag.term_id != tagId)
             this.$store.commit('setSelectedPerformances', this.selectedPerformances)
         },
-
-        findPendantFromPerformanceId(pendants, performanceTermId) {
-            let pendantName = pendants.find(pendant => pendant.performances.find(p => p.term_id == performanceTermId)).name
-            return pendantName
-        },
         pendantsAfterFiltering() {
             if (this.visiblePerformances.length == 0) {
-                console.log(0)
                 return this.pendants
             } else {
-                let copyPendants = this.pendants
+                this.visiblePerformances.forEach(visiblePerformance => {
+                    
+                    let pendantName = this.pendants.find(pendant => pendant.performances.find(p => p.term_id === parseInt(visiblePerformance))).name
+                    
+                    let pendant = this.pendants.find(p => p.name == pendantName)
 
-                // [1, 10, 20, 505]
-                // ['pa_wattage', 'pa_wattage', 'pa_lens-filter', 'pa_lens-filter']
-
-                copyPendants.filter(pendant => {
-
-                    this.visiblePerformances.filter(performance => {
-                        let performanceName = this.findPendantFromPerformanceId(this.pendants, performance)
-
-                        if (pendant.name == performanceName ) {
-                            let pendantPerformances = pendant.performances.filter(p => 
-                                // p.hidden = false
-                            )
+                    pendant.performances.forEach(p => {
+                        if (p.term_id !== parseInt(visiblePerformance)) {
+                            // if (p.hidden === false) {
+                                this.$store.commit('setPendantPerformanceVisibility', {
+                                    performanceId: p.term_id, 
+                                    isHidden: true 
+                                })
+                            // }
+                        } else {
+                            // if (p.hidden === true) {
+                                console.log('visible')
+                                // this.$store.commit('setPendantPerformanceVisibility', {
+                                //     performance: p, 
+                                //     isHidden: false 
+                                // })
+                            // }
                         }
                     })
                 })
-                console.log(copyPendants)
-                return copyPendants
+                return this.pendants
             }
-        }
-
-            // prvi put kada se cekira checkbox pozvace metodu za filtriranje
-            //cekirani checkbox se obavezno nalazi i u nizu visiblePerformances
+        },
+        // prvi put kada se cekira checkbox pozvace metodu za filtriranje
+        //cekirani checkbox se obavezno nalazi i u nizu visiblePerformances
         // 7. ako je vrednost pendanta u nizu visiblePerformances, bice vidljiva
         // 8. samo checkboksovi koji su rucno cekirani ce se i videti kao cekirani 
-            // (oni su u oba niza: visiblePerformances i selectedPerformances )
-            // ostali ce biti samo vidljivi
+        // (oni su u oba niza: visiblePerformances i selectedPerformances )
+        // ostali ce biti samo vidljivi
     }
 }
 </script>
@@ -217,9 +219,6 @@ export default {
     .block-pendants__part__visible {
         align-items: center;
     }
-    .block-pendants__part__visible--last-row {
-        // border-bottom: 1px solid $darkColor;
-    }
     .arrow-top {
         transform: rotate(180deg);
     }
@@ -228,7 +227,6 @@ export default {
         opacity: 0.7;
     }
     
-
   //...............checkbox...............
 ul {
     padding: 10px 20px;
@@ -290,6 +288,4 @@ label span {
         transform: scale(1.2);
     }
 }
-
-
 </style>

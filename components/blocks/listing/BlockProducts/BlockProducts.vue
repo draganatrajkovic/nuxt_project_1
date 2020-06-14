@@ -14,7 +14,6 @@
 <script>
 import PartPagination from '~/components/parts/PartPagination.vue';
 import SingleProduct from './BlockProductsProduct.vue';
-import { pendantService } from './../BlockPendants/PendantsService'
 import {  mapGetters } from 'vuex';
 export default {
     components: {
@@ -25,7 +24,6 @@ export default {
         return {
             product: '',
             activePage: 1, 
-            pendants: pendantService.all(),
         }
     },
     beforeMount() {
@@ -35,7 +33,8 @@ export default {
         ...mapGetters({
             productsList: 'getProductsList' ,
             selectedPerformances: 'getSelectedPerformances',
-            visiblePerformances: 'getVisiblePerformances'
+            visiblePerformances: 'getVisiblePerformances',
+            pendants: 'getPendants'
         }), 
         visibleProducts() {
             let i
