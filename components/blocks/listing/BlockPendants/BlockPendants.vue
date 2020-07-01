@@ -124,32 +124,25 @@ export default {
             if (this.visiblePerformances.length == 0) {
                 return this.pendants
             } else {
-                this.visiblePerformances.forEach(visiblePerformance => {
-                    
-                    let pendantName = this.pendants.find(pendant => pendant.performances.find(p => p.term_id === parseInt(visiblePerformance))).name
-                    
-                    let pendant = this.pendants.find(p => p.name == pendantName)
+                let arr =  this.pendants
 
-                    pendant.performances.forEach(p => {
-                        if (p.term_id !== parseInt(visiblePerformance)) {
-                            // if (p.hidden === false) {
-                                this.$store.commit('setPendantPerformanceVisibility', {
-                                    performanceId: p.term_id, 
-                                    isHidden: true 
-                                })
-                            // }
+                var i = 0;
+                arr.forEach( pendant => {
+                    pendant.performances.forEach( term => {
+                        const termId = term.term_id;
+                        if(this.visiblePerformances.includes(termId.toString())){
+                            // i++;
+                            term.hidden = false
+                            // console.log('visible')
                         } else {
-                            // if (p.hidden === true) {
-                                console.log('visible')
-                                // this.$store.commit('setPendantPerformanceVisibility', {
-                                //     performance: p, 
-                                //     isHidden: false 
-                                // })
-                            // }
+                            // term.hidden = true
+                            // console.log(term.hidden)
                         }
                     })
                 })
-                return this.pendants
+                // console.log(i)
+                this.$store.commit('setPendantsAfterFiltering', arr)
+                // return arr
             }
         },
         // prvi put kada se cekira checkbox pozvace metodu za filtriranje

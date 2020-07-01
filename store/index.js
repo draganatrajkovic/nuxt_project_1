@@ -207,18 +207,15 @@ export const mutations = {
         })
     },
     setAllPendantsVisible(state) {
-        return state.pendants.forEach(pendant => 
+        state.pendants.forEach(pendant => 
             pendant.performances.map(performance => 
                 performance.hidden = false
             )
         )
     },
-    setPendantPerformanceVisibility(state, {performanceId, isHidden}) {
-        state.pendants.forEach(pen => pen.performances.forEach(p => {
-            if (p.term_id === performanceId) {
-                return p.hidden = isHidden
-            }
-        }))
+    setPendantsAfterFiltering(state, arr) {
+        state.pendants = arr
+        // console.log(state.pendants[1].name)
     }
 }
 
@@ -231,6 +228,11 @@ export const actions = {
         // console.log(res.data)    
         commit('setProducts', res.data);
         });
-    }
+    },
+    // async dispatchSetPendantsAfterFiltering({commit}, changedPendants) {
+    //     setTimeout(() => {
+    //         commit('setPendantsAfterFiltering', changedPendants)
+    //     }, 3000)
+    // }
 }
 
